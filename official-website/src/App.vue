@@ -41,9 +41,20 @@ export default {
    bottom: 0;
  }
 
+/* 平板 */
  @media screen and (min-width: 768px) and (max-width: 996px) {
    #app{
      height: 100% !important;
    }
  }
+ /* 手机 */
+ /* 媒体查询（手机） */
+@media screen and (max-width: 768px) {
+  .footer{
+    position: static;
+    left: 0;
+    bottom: 0;
+  }
+
+}
 </style>
