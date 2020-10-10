@@ -226,7 +226,7 @@ export default {
                                     detailsData:res.data.detail
                                 }
                             },
-                            area:['80%','660px'],
+                            area:['80%','550px'],
                             title: '产品详情',
                             cancel:()=>{
                                 

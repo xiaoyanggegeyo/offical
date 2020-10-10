@@ -115,6 +115,7 @@ export default {
         display: block;
     }
 
+ /* 媒体查询（平板） */
     @media screen and (min-width: 768px) and (max-width: 996px) {
          .infoDeatil{
             padding: 0px 5px 60px 5px;
