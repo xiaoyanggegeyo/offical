@@ -45,8 +45,6 @@ export default {
   
 }
 
-
-
 /* 平板 */
  @media screen and (min-width: 768px) and (max-width: 996px) {
    #footer{
@@ -59,7 +57,6 @@ export default {
 @media screen and (max-width: 768px) and(min-width:300px) {
   #footer{
     position: absolute;
-    right: 0px;
     left: 0px;
     bottom: 0px;
   }

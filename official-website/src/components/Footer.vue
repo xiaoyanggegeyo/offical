@@ -1,5 +1,5 @@
 <template>
-  <div id="footer" style="height:229px;background:#444444; overflow:hidden;">
+  <div id="footer" style="height:230px;background:#444444; overflow:hidden;">
     <div style="margin-top:30px;display:flex;width:100%;">
       <div style="flex:1;margin-left:250px;">
         <div style="color:#FFFFFF;">关于宝林</div>
@@ -33,19 +33,4 @@ export default {
   }
 };
 </script>
-<style scoped>
-
-/* 平板  */
-@media screen and (min-width: 768px) and (max-width: 996px) {
-  #footer{
-    width: 100%;
-    margin-bottom: 0px;
-    bottom: 0px;
-  }
-  
-
-
-
-}
-</style>
 
