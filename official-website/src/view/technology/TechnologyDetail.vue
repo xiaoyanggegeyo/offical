@@ -87,7 +87,7 @@ export default {
                                 data:{
                                 }
                             },
-                            area:['55%','701px'],
+                            area:['90%','701px'],
                             title: '预约',
                             cancel:()=>{
                                 

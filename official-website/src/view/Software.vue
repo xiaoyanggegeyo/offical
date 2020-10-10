@@ -15,7 +15,7 @@
                              <left-nav :data-list="dataList" @currentNavMenu="currentNavMenu"/>
                           </el-col>
                           <!-- 左侧内容区域 -->
-                          <el-col  style="margin-left:32px;margin-top:64px;width:1027px;">
+                          <el-col  style="margin-left:32px;margin-top:64px;width:80%;">
                               <!-- 公司简介 -->
                               <div v-if="flag==0" class="row textBox" style="width:100%;">
                                   <div v-html="CommpanyList[0].detail"></div>

@@ -226,7 +226,7 @@ export default {
                                     detailsData:res.data.detail
                                 }
                             },
-                            area:['1100px','700px'],
+                            area:['80%','660px'],
                             title: '产品详情',
                             cancel:()=>{
                                 
@@ -506,6 +506,9 @@ export default {
     }
     #whyChooseUs .server-block>div {
         color: #ccc;
+    }
+    .CardtextBox .title{
+        width: 10px;
     }
 }
 

@@ -34,26 +34,30 @@ export default {
 </script>
 
 <style scoped>
+/* 电脑 */
  .footer{
-   position: absolute;
+   position: static;
    width: 100%;
-   left: 0;
-   bottom: 0;
+   left: 0px;
+   bottom: 0px;
  }
+
 
 /* 平板 */
  @media screen and (min-width: 768px) and (max-width: 996px) {
-   #app{
-     height: 100% !important;
-   }
+   .footer{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+  }
  }
- /* 手机 */
  /* 媒体查询（手机） */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) and(min-width:330px) {
   .footer{
-    position: static;
-    left: 0;
-    bottom: 0;
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
   }
 
 }
