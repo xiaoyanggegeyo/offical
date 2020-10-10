@@ -24,7 +24,7 @@
           </el-col>
         </el-row>
         <el-row>
-          <el-col :span="8">
+          <el-col :xs="24" :sm="24" :md="16" :lg="8">
             <el-form-item label="">
             <span class="inputText">选择所到门店</span>
               <el-select v-model="shopId" @change="handleShopSelect" placeholder="选择所到门店" style="width:100%">
@@ -36,7 +36,7 @@
               </el-select>
             </el-form-item>
           </el-col>
-          <el-col :span="8">  
+          <el-col :xs="24" :sm="24" :md="16" :lg="8">  
             <el-form-item label="">
                 <span class="inputText">选择所到服务类型</span>
               <el-select v-model="toolType.serviceId" placeholder="选择所到服务类型" style="width:100%">
@@ -51,7 +51,7 @@
           </el-col>
         </el-row>
         <el-row>
-          <el-col :span="8">
+          <el-col :xs="24" :sm="24" :md="16" :lg="8">
             <el-form-item label="">
                 <span class="inputText">备注</span>
               <el-input v-model="toolType.remark" clearable/>
