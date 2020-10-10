@@ -267,7 +267,7 @@ export default {
     height: 100%;
 }
 .CardtextBox{
-    width: 100%;
+    width: 300px;
     margin-top: 14px;
     text-align: center;
     color: #444444;
@@ -279,7 +279,11 @@ export default {
 
 /* 媒体查询（手机） */
 
-@media screen and (max-width: 768px) {
+@media screen and(min-width:360px)  and (max-width: 768px) {
+    .CardtextBox{
+        text-align: left;
+    }
+   
     #swiper {
         height: 200px;
     }
