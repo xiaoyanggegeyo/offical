@@ -1,0 +1,23 @@
+{
+  "id": "2113407",
+  "name": "药片yin'p",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7206867",
+      "name": "点赞",
+      "font_class": "zan",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "14021706",
+      "name": "点赞",
+      "font_class": "dianzan",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}
