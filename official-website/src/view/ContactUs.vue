@@ -112,6 +112,7 @@ export default {
     padding-bottom: 8px;
 }
 
+
 /* 平板媒体查询 */
 @media screen and (min-width: 768px) and (max-width: 996px) {
   /* 地图 */
@@ -121,17 +122,21 @@ export default {
   .contentBox{
     width:768px !important;
   }
-
-
-
-
-
   .container{
     margin-top: 100px;
   }
 
   .ContactUs-container {
     padding: 20px 0;
+  }
+}
+/* 手机 */
+@media screen and (max-width: 768px) {
+  .ContactUs-container{
+    width: 100% !important;
+  }
+  #map{
+    width: 100%;
   }
 }
 
