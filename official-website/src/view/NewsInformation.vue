@@ -116,6 +116,10 @@ export default {
         //显示商品详情
          showGoodsDetail(goodsId){
             getGoodsDetail(goodsId).then(res=>{
+                if(!res.data){
+                    this.$message("没有详情数据!");
+                    return;
+                }
                 //开启弹窗 传递数据
                 this.$layer.iframe({
                             content: {
