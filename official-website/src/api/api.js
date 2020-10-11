@@ -10,7 +10,7 @@ export function getActiveAdd(type) {
 //新闻动态列表(下拉刷新)
 export function getInformationList(){
     return Service({
-        url: 'api/banner/getActiveAd',
+        url: 'api/commom/getInformationList',
         params: { pageNo: 1 ,pageSize:10}
       })
 }

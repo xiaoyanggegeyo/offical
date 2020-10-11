@@ -147,7 +147,7 @@ export default {
         })
         //获取新闻列表
         getInformationList().then(res=>{
-            this.InformationList=res.data
+            this.InformationList=res.data.items
         }).catch(err=>{
 
         })
@@ -424,6 +424,15 @@ export default {
 
 /* 媒体查询（手机） */
 @media screen and (max-width: 768px) {
+    #bodyBox{
+        width:100% !important;
+        overflow: hidden;
+    }
+
+
+
+
+
     #swiper {
         height: 200px;
     }

@@ -15,7 +15,7 @@
                              <left-nav :data-list="dataList" @currentNavMenu="currentNavMenu"/>
                           </el-col>
                           <!-- 左侧内容区域 -->
-                          <el-col  style="margin-left:32px;margin-top:64px;width:80%;">
+                          <el-col class="leftBox" style="margin-left:32px;margin-top:64px;width:80%;">
                               <!-- 公司简介 -->
                               <div v-if="flag==0" class="row textBox" style="width:100%;">
                                   <div v-html="CommpanyList[0].detail"></div>
@@ -191,10 +191,10 @@ export default {
 }
 
 
-.textBox img{
-    display: block;
-    width: 100%;
-}
+.textBox .img_wrapper img{
+        display: block;
+        width: 100% !important;
+    }
 
 /* 标题文字 */
 
@@ -304,6 +304,14 @@ export default {
 /* 媒体查询（手机） */
 
 @media screen and (max-width: 768px) {
+    .leftBox{
+        width: 45% !important;
+    }
+    .textBox .img_wrapper img{
+        display: block;
+        width: 100% !important;
+    }
+   
     #swiper {
         height: 200px;
     }
@@ -360,38 +368,14 @@ export default {
     #customer .customer-block>div {
         padding: 30px 0;
     }
-    #whyChooseUs {
-        padding: 20px 0;
-        transition: all ease 0.6s;
-    }
-    #whyChooseUs .whyChooseUs-title p:nth-of-type(1) {
-        font-size: 20px;
-        font-weight: 700;
-    }
-    #whyChooseUs .whyChooseUs-title p:nth-of-type(2) {
-        font-size: 12px;
-    }
-    #whyChooseUs .server-block {
-        padding: 50px 0;
-        border: 1px solid #ccc;
-        border-bottom: 5px solid #ccc;
-    }
-    #whyChooseUs .server-block img {
-        width: 48px;
-        height: 48px;
-    }
-    #whyChooseUs .server-block>p {
-        font-size: 20px;
-        margin: 30px 0;
-    }
-    #whyChooseUs .server-block>div {
-        color: #ccc;
-    }
 }
 
 /* 媒体查询（平板） */
 
 @media screen and (min-width: 768px) and (max-width: 996px) {
+     .leftBox img{
+        width: 100% !important;
+    }
     #swiper {
         height: 400px;
     }

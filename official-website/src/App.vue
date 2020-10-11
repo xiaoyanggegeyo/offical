@@ -42,6 +42,7 @@ export default {
    left: 0px;
    bottom: 0px;
  }
+
   
 }
 
@@ -60,6 +61,7 @@ export default {
     left: 0px;
     bottom: 0px;
   }
+  
 
 }
 </style>
