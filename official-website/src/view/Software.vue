@@ -18,11 +18,11 @@
                           <el-col class="leftBox" style="margin-left:32px;margin-top:64px;width:80%;">
                               <!-- 公司简介 -->
                               <div v-if="flag==0" class="row textBox" style="width:100%;">
-                                  <div v-html="CommpanyList[0].detail"></div>
+                                  <div class="content" v-html="CommpanyList[0].detail"></div>
                               </div>
                               <!-- 企业概况 -->
                               <div v-if="flag==1" class="row textBox" style="width:100%;">
-                                  <div v-html="CommpanyList[1].detail"></div>
+                                  <div class="content" v-html="CommpanyList[1].detail"></div>
                               </div>
                           </el-col>
                       </el-row>          
@@ -141,7 +141,6 @@ export default {
 </script>
 <style scoped>
 /* 整体盒子 */
-
 #HomePage {
     width: 100%;
 }
@@ -307,10 +306,7 @@ export default {
     .leftBox{
         width: 45% !important;
     }
-    .textBox .img_wrapper img{
-        display: block;
-        width: 100% !important;
-    }
+    
    
     #swiper {
         height: 200px;
