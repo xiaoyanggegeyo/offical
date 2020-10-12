@@ -7,7 +7,7 @@
         <div style="width:1202px;margin:auto;">
             <div id="bigData" style="padding-top:0px;width:100%;" class="container-fuild">
                 <div class="row bigData-container" style="width:1202px;">
-                    <span class="bodyTitle">技术实力</span>
+                    <span class="bodyTitle">产品展示</span>
                     <div style="border-top:1px solid #E4E4E4;margin-top:7px;">              
                       <el-row  class="tac" style="margin-top:19px;">
                           <leftNav :data-list="dataList" @currentNavMenu="currentNavMenu"/>

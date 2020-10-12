@@ -17,7 +17,7 @@
                 <div class="swiper-button-next"></div>
             </div>
         </div>
-        <div style="width:1202px;margin:0px auto;" id="bodyBox">
+        <div style="width:1202px;" id="bodyBox">
           <!-- 概要 -->
             <div id="bigData" class="container-fuild" style="width:100%;">
                 <div class="row bigData-container"  style="width:1202px">
@@ -330,13 +330,20 @@ export default {
     line-height: 22px;
     padding-bottom: 8px;
 }
+#bodyBox{
+        width:100% !important;
+        overflow: hidden;
+    }
 
 #bigData {
-    padding: 100px;
+    /* padding: 100px; */
     transition: all ease 0.6s;
     box-sizing: border-box;
     width: 100%;
-    margin: 0 auto;
+}
+.bigData-container{
+    
+    margin: 30px auto 131px auto;
 }
 
 #bigData .bigData-title {

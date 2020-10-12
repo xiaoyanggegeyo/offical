@@ -59,6 +59,7 @@
               {{item.name}}
               <i class="underline"></i>
             </router-link>
+            <!-- 下拉列表 -->
             <dl v-if="item.children.length>0" class="mobileMenu">
               <dt v-for="(i,index) in item.children" :key="index" @click="mavChildClick(i.path)">
                 <router-link :to="i.path" >{{i.name}}</router-link>
@@ -154,10 +155,9 @@ export default {
     mobileNavClick(index,name,path){
       //改变最顶上面的
       this.menuName=name
+      console.log(name)
       //显示下拉列表
-      if(path.indexOf("/store")){
-        this.childMenuFlag=!this.childMenuFlag;
-      }
+      
 
     }
   }
@@ -332,9 +332,6 @@ export default {
   border-style: solid;
   border-color: transparent #000 transparent transparent;
 }
-
-
-
 
 
 .mobileMenu dt{
