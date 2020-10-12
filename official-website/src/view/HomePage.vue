@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <!-- 企业概况 -->
-                    <div class="col-xs-12 col-sm-12 col-md-4" style="margin-right:64px;">
+                    <div class="col-xs-12 col-sm-12 col-md-4 survey" style="margin-right:64px;">
                         <span class="bodyTitle">企业概况</span>
                         <div style="border-top:1px solid #E4E4E4;padding-top:11px;margin-top:7px;width:431px;">
                             <p style="text-indent:2em;line-height:36px;font-size:14px;"> 中药创建于2005年，前期投资3000万，占地面积28余亩，标准化生产车间及辅助用房建筑面积1000平方米。展望未来，公司承载重任，以“承中药之文化，扬国药之精髓，铸人类之健康”为使命，以“百亿中药”为目标，继续致力于现代中药、中药饮片与配方颗粒、中医药健康产业等板块的发展。 中药创建于2005年，前期投资3000万，占地面积28余亩，标准化生产车间及辅助用房建筑面积1000平方米。展望未来，公司承载重任，以“承中药之文化，扬国药之精髓。 </p>
@@ -343,7 +343,7 @@ export default {
 }
 .bigData-container{
     
-    margin: 30px auto 131px auto;
+    margin: 30px auto 30px auto;
 }
 
 #bigData .bigData-title {
@@ -434,6 +434,10 @@ export default {
     #bodyBox{
         width:100% !important;
         overflow: hidden;
+    }
+    .survey{
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
 
 
