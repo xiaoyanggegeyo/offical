@@ -21,9 +21,10 @@
             <span v-if="item.children.length>0" class="glyphicon glyphicon-menu-down"></span>
             <i class="underline"></i>
           </router-link>
+          <!-- 子菜单 -->
           <dl v-if="item.children.length>0">
-            <dt v-for="(i,n) in item.children" :key="n">
-              <router-link :to="i.path">{{i.name}}</router-link>
+            <dt v-for="(i,index) in item.children" :key="index" @click="mavChildClick(i.path)">
+              <router-link :to="i.path" >{{i.name}}</router-link>
             </dt>
           </dl>
         </li>
@@ -51,13 +52,18 @@
             v-for="(item,index) in navList"
             :key="index"
             :class="index==navIndex?'active':''"
-            @click="navClick(index,item.name,item.path)"
+            @click="mobileNavClick(index,item.name,item.path)"
             data-toggle="collapse"
             data-target="#menu">
             <router-link :to="item.path">
               {{item.name}}
               <i class="underline"></i>
             </router-link>
+            <dl v-if="item.children.length>0" class="mobileMenu">
+              <dt v-for="(i,index) in item.children" :key="index" @click="mavChildClick(i.path)">
+                <router-link :to="i.path" >{{i.name}}</router-link>
+              </dt>
+            </dl> 
           </li>
         </ul>
       </div>
@@ -74,13 +80,9 @@ export default {
     getCompanyShopList().then(res=>{
       var chilList=[];
       res.data.list.forEach(item => {
-        var chilObj={path:"",name:""}
-        chilObj.path=item.link;
-        chilObj.name=item.title;
-        chilList.push(chilObj)
+        chilList.push({name:item.title,path:item.link})
       });
       this.navList[4].children=chilList;
-      console.log(this.navList[4].children);
     })
   },
   data() {
@@ -113,7 +115,7 @@ export default {
         },
         {
           name: "企业商城",
-          path: "/http",
+          path: "/store",
           children: []
         },
         {
@@ -121,7 +123,9 @@ export default {
           path: "/contactus",
           children: []
         }
-      ]
+      ],
+      // 手机端子菜单隐藏和显示标识符
+      childMenuFlag:false
     };
   },
   methods: {
@@ -130,10 +134,15 @@ export default {
       sessionStorage.setItem('navIndex',index)
       this.menuName = name;
       //TODO 跳转 path没把外部链接渲染上
-      if(name.indexOf("企业商城") !=-1){
-        console.log(index)
-        window.open("https://www.baidu.com");
-      }
+      // if(name.indexOf("企业商城") !=-1){
+      //   console.log(index)
+      //   window.open("https://www.baidu.com");
+      // }
+    },
+    //子菜单跳转外部链接
+    mavChildClick(path){
+      window.open(path);
+
     },
     menuClick() {
       if (this.menuClass == "glyphicon glyphicon-menu-down") {
@@ -141,6 +150,15 @@ export default {
       } else {
         this.menuClass = "glyphicon glyphicon-menu-down";
       }
+    },
+    mobileNavClick(index,name,path){
+      //改变最顶上面的
+      this.menuName=name
+      //显示下拉列表
+      if(path.indexOf("/store")){
+        this.childMenuFlag=!this.childMenuFlag;
+      }
+
     }
   }
 };
@@ -287,6 +305,36 @@ export default {
   cursor: pointer;
   background: #ccc;
 }
+
+
+.mobileMenu::be{
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+
+}
+/* 手机导航栏二级菜单 */
+.mobileMenu{
+  
+  background-color:#000;
+  width: 30%;
+  margin-left: 65%;
+  margin-top: -6%;
+  z-index: 100;
+}
+.mobileMenu dt{
+  border-bottom: 1px solid #ccc;
+}
+.mobileMenu a{
+  color: #fff !important;
+}
+
+
+
+
+
 @media screen and (max-width: 997px) {
   #header .header-nav-m {
     position: relative;
