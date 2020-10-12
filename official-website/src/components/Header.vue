@@ -24,7 +24,7 @@
           <!-- 子菜单 -->
           <dl v-if="item.children.length>0">
             <dt v-for="(i,index) in item.children" :key="index" @click="mavChildClick(i.path)">
-              <router-link :to="i.path" >{{i.name}}</router-link>
+              <router-link :to="i.path" style="color:#333333">{{i.name}}</router-link>
             </dt>
           </dl>
         </li>
@@ -232,11 +232,12 @@ export default {
 }
 /* 导航栏 每个导航下面的 a 链接 */
 #header .header-nav .header-nav-wrapper > li > a {
-  color: #000;
+  color: #333333;
   font-size: 15px;
-  font-weight: bold;
+  /* font-weight: bold; */
   padding: 15px 0;
   position: relative;
+  font-size: 16px;
 }
 /* 导航栏 每个导航下面的 a 链接的下划线 */
 #header .header-nav .header-nav-wrapper > li > a > i {

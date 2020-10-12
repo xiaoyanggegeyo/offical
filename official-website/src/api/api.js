@@ -15,13 +15,13 @@ export function getInformationList(){
       })
 }
 //产品列表
-export function  getGoodsList(){
+export function  getGoodsList(classId){
     return Service({
         url:"api/commom/getGoodsList",
         params:{
             pageNo:1,
             pageSize:10,
-            classId:4
+            classId:classId
         }
     })
 }

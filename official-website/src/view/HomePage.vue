@@ -22,13 +22,13 @@
             <div id="bigData" class="container-fuild" style="width:100%;">
                 <div class="row bigData-container"  style="width:1202px">
                     <!-- 新闻动态 --> 
-                    <div class="col-xs-12 col-sm-12 col-md-4  zoomIn" style="margin-right:65px">
+                    <div class="col-xs-12 col-sm-12 col-md-4  zoomIn" style="margin-right:65px;overflow-y: scroll;height:400px">
                         <span class="bodyTitle">新闻动态</span>
                         <div style="border-top:1px solid #E4E4E4;margin-top:7px;width:359px;">
                             <!-- 遍历这个item组件 -->
                             <div  style="border-bottom:1px dashed #E4E4E4;height:60px;line-height:60px;display:flex;" 
                                   v-for="(info,infoindex) in InformationList" :key="infoindex" @click="showInfoDeail(info.id)">
-                                <span style="width:330px;word-break:break-all;flex:3;">{{info.title}}</span>
+                                <span style="width:330px;word-break:break-all;flex:3;text-overflow: ellipsis;overflow:hidden;white-space:nowrap">{{info.title}}</span>
                                 <span style="margin-left:11px;color:#999999;flex:1;overflow:hidden">{{info.createtime}}</span>
                             </div>
                         </div>
@@ -152,7 +152,7 @@ export default {
 
         })
         //获取产品列表
-        getGoodsList().then(res=>{
+        getGoodsList(4).then(res=>{
             this.GoodsList=res.data.items;
         }).catch(err=>{
 
@@ -318,6 +318,10 @@ export default {
     font-size: 20px;
     margin-top: 1%;
     font-weight: 700;
+}
+.swiper-button-prev, .swiper-button-next{
+    color: #fff;
+    /* background: #5e5f5e; */
 }
 
 /* 标题文字 */
