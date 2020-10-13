@@ -219,6 +219,10 @@ export default {
   line-height: 50px;
 }
 #header .header-nav .header-nav-wrapper {
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  top: 5px;
   line-height: 110px;
   float: right;
   margin: 0;
@@ -227,7 +231,7 @@ export default {
 /* 导航栏 每个导航 */
 #header .header-nav .header-nav-wrapper > li {
   float: left;
-  margin: 0 15px;
+  margin: 0 30px;
   position: relative;
 }
 /* 导航栏 每个导航下面的 a 链接 */

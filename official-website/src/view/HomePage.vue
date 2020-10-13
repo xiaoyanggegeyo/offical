@@ -1,11 +1,13 @@
 <template>
-    <div id="HomePage">
+    <div id="HomePage" v-cloak>
         <!-- 轮播图 -->
         <div id="swiper" class="container-fuild" >
             <div class="swiper-container banner-swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide" v-for="(item,index) in bannerList" :key="index">
-                        <img class="swiper-lazy" :src="item.bannerUrl" alt="轮播图">
+                        <a :href="item.link">
+                            <img class="swiper-lazy" :src="item.bannerUrl" alt="轮播图">
+                        </a>
                         <!-- <div class="swiper-lazy-preloader"></div> -->
                     </div>
                 </div>
@@ -13,8 +15,8 @@
                 <div class="swiper-pagination"></div>
                 
                 <!-- 如果需要导航按钮 -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <!-- <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div> -->
             </div>
         </div>
         <div style="width:1202px;" id="bodyBox">
@@ -87,7 +89,7 @@
                           <!-- 左侧内容区域 -->
                           <el-col  style="margin-left:21px;margin-top:-15px;width:1032px">
                               <div class="row" style="width:100%">
-                                   <div  v-for="(item,index) in TechnologyList" :key="index" class=" col-xs-12 col-sm-12 col-md-4">
+                                   <div  v-for="(item,index) in TechnologyList" :key="index" class=" col-xs-12 col-sm-12 col-md-4" v-cloak>
                                       <Card  class="card"  :technology-item="item" @PraiseSuccess="praiseSuccessHandler"/>
                                   </div>
                               </div>
@@ -296,6 +298,11 @@ export default {
     position: relative;
 }
 
+#swiper .swiper-pagination-bullet-active{
+        opacity: 1;
+    background: #03f568 !important;
+}
+
 #swiper .banner-swiper .swiper-slide-title {
     position: absolute;
     top: 0;
@@ -323,6 +330,12 @@ export default {
     color: #fff;
     /* background: #5e5f5e; */
 }
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{
+   width: 0.4rem;
+   height: 0.3rem;
+   border-radius: 50%;
+}
+
 
 /* 标题文字 */
 

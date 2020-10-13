@@ -42,8 +42,6 @@ export default {
    left: 0px;
    bottom: 0px;
  }
-
-  
 }
 
 /* 平板 */

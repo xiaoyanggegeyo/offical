@@ -6,6 +6,8 @@
             <!-- 图片 -->
                 <img  style="display:block;width:100%;height:100;" :src="detail.detailUrl"/>
             </div>
+            <div class="createtime">{{detail.createtime}}</div>
+            <div class="title">{{detail.title}}</div>
         <!-- TODO 后台富文本 -->
             <div v-html="detail.detail" style="display:block;padding:0px 15px 0 15px">
             
@@ -108,6 +110,21 @@ export default {
         width: 100%;
         height: 100%;
         display: block;
+    }
+    .createtime{
+        margin-top: 50px;
+        color: #999999;
+        font-size: 14px;
+    }
+    .title{
+        margin-top: 30px; 
+        margin-bottom: 30px;
+        background: #FFFFFF;
+        font-size: 32px;
+        font-family: PingFang-SC-Regular, PingFang-SC;
+        font-weight: 400;
+        color: #444444;
+        line-height: 45px;
     }
 
     @media screen and (min-width: 768px) and (max-width: 996px) {

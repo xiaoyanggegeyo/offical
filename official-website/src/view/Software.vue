@@ -2,7 +2,9 @@
     <div id="HomePage">
         <!-- 轮播图 单张显示-->
         <div style="width:100%;height:600px;margin-bottom:30px" class="container-fuild">
-            <img style="display:block;height:100%;width:100%" :src="bannerList.bannerUrl" alt="">
+            <a :href="bannerList.link">
+                <img style="display:block;height:100%;width:100%" :src="bannerList.bannerUrl" alt="">
+            </a>
         </div>    
             <!-- 技术实力 -->
             <div id="bigData" style="padding-top:0px;width:100%;" class="container-fuild">
@@ -46,7 +48,7 @@ export default {
     },
     created(){
          // 获取轮播图
-        getActiveAdd(2).then(res=>{
+        getActiveAdd(4).then(res=>{
             this.bannerList=res.data[0]
         }).catch(err=>{
         })

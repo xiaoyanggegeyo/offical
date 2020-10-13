@@ -1,14 +1,16 @@
 <template>
     <div class="infoDeatil">
             <video-player  v-if="detail.detailType==2" class="video-player vjs-custom-skin  col-sm-12 col-xs-12 col-md-12  col-lg-12" ref="videoPlayer" :playsinline="true" 
-                    :options="playerOptions" style="width:100%; height: 100%;display:block;"/>
+                    :options="playerOptions" style="width:100%; height: 100%;display:block; border-radius: 10px;"/>
             <div style="width:100%;" v-if="detail.detailType==1">
             <!-- 图片 -->
-                <img  style="display:block;width:100%;height:100;" :src="detail.detailUrl"/>
+                <img  style="display:block;width:100%;height:100; border-radius: 10px;" :src="detail.detailUrl"/>
             </div>
+            <div class="createtime">{{detail.createtime}}</div>
+            <div class="title">{{detail.name}}</div>
         <!-- TODO 后台富文本 -->
             <div v-html="detail.detail" style="display:block;padding:0px 0px 0 0px">
-            
+                
             </div>
         <el-footer v-if="detail.conventionType==1" class="layer-bottom-btn" style="text-align:center;margin-top:50px">
                 <el-button type="primary" @click="saveConvention" size="medium">预约</el-button>
@@ -114,6 +116,24 @@ export default {
         height: 100%;
         display: block;
     }
+      .createtime{
+        margin-top: 50px;
+        color: #999999;
+        font-size: 14px;
+    }
+    .title{
+        margin-top: 30px; 
+        margin-bottom: 30px;
+        background: #FFFFFF;
+        font-size: 32px;
+        font-family: PingFang-SC-Regular, PingFang-SC;
+        font-weight: 400;
+        color: #444444;
+        line-height: 45px;
+       
+    }
+
+
 
  /* 媒体查询（平板） */
     @media screen and (min-width: 768px) and (max-width: 996px) {

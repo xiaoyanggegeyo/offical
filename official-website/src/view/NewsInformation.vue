@@ -2,7 +2,9 @@
     <div id="HomePage">
         <!-- 轮播图 -->
         <div style="width:100%;height:600px;margin-bottom:30px" class="container-fuild">
-            <!-- <img style="display:block;height:100%;width:100%" :src="bannerList.bannerUrl" alt=""> -->
+            <a :href="bannerList.link">
+                <img style="display:block;height:100%;width:100%" :src="bannerList.bannerUrl" alt="">
+            </a>
         </div> 
         <div style="width:1202px;margin:auto;">
             <div id="bigData" style="padding-top:0px;width:100%;" class="container-fuild">
