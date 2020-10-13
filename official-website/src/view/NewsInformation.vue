@@ -10,7 +10,7 @@
             <div id="bigData" style="padding-top:0px;width:100%;" class="container-fuild">
                 <div class="row bigData-container" style="width:1202px;">
                     <span class="bodyTitle">产品展示</span>
-                    <div style="border-top:1px solid #E4E4E4;margin-top:7px;">              
+                    <div style="border-top:1px solid #E4E4E4;margin-top:7px;" class="contentBox">              
                       <el-row  class="tac" style="margin-top:19px;">
                           <leftNav :data-list="dataList" @currentNavMenu="currentNavMenu"/>
                           <el-col  style="margin-left:21px;margin-top:-82px;width:1032px">
@@ -117,6 +117,7 @@ export default {
         //显示商品详情
          showGoodsDetail(goodsId){
             getGoodsDetail(goodsId).then(res=>{
+                console.log("产品详情==========》")
                 console.log(res)
                 if(!res.data){
                     this.$message("没有详情数据!");
@@ -149,6 +150,7 @@ export default {
 
 #HomePage {
     width: 100%;
+    overflow: hidden;
 }
 
 /* 轮播图 */
@@ -286,6 +288,7 @@ export default {
 /* 媒体查询（手机） */
 
 @media screen and(min-width:360px)  and (max-width: 768px) {
+  
     .CardtextBox{
         text-align: left;
     }
