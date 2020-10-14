@@ -242,7 +242,6 @@ export default {
         getTechnologyLists(classId){
             getTechnologyList(classId).then(res=>{
                 this.TechnologyList=res.data.items
-                console.log(this.TechnologyList);
             }).catch(err=>{
 
             })

@@ -49,7 +49,7 @@
         <!-- 导航内容 -->
         <ul id="menu" class="header-nav-m-wrapper collapse">
           <li
-            v-for="(item,index) in navList"
+            v-for="(item,index) in mobileNavList"
             :key="index"
             :class="index==navIndex?'active':''"
             @click="mobileNavClick(index,item.name,item.path)"
@@ -57,14 +57,9 @@
             data-target="#menu">
             <router-link :to="item.path">
               {{item.name}}
+              <span v-if="index==4" class="glyphicon glyphicon-menu-up"></span>
               <i class="underline"></i>
             </router-link>
-            <!-- 下拉列表 -->
-            <dl v-if="item.children.length>0" class="mobileMenu">
-              <dt v-for="(i,index) in item.children" :key="index" @click="mavChildClick(i.path)">
-                <router-link :to="i.path" >{{i.name}}</router-link>
-              </dt>
-            </dl> 
           </li>
         </ul>
       </div>
@@ -81,9 +76,16 @@ export default {
     getCompanyShopList().then(res=>{
       var chilList=[];
       res.data.list.forEach(item => {
-        chilList.push({name:item.title,path:item.link})
+        chilList.push({name:item.title,path:item.link,children:[]})
       });
       this.navList[4].children=chilList;
+
+      //手机导航菜单---与pc端分开
+      this.mobileNavList=this.navList.slice(0,5);
+      chilList.forEach(item=>{
+        this.mobileNavList.push(item)
+      })
+      this.mobileNavList.push(this.navList[5])
     })
   },
   data() {
@@ -125,26 +127,22 @@ export default {
           children: []
         }
       ],
-      // 手机端子菜单隐藏和显示标识符
-      childMenuFlag:false
+      //手机的导航
+      mobileNavList:[]
     };
   },
   methods: {
     navClick(index, name,path) {
+      
       this.navIndex = index;
       sessionStorage.setItem('navIndex',index)
       this.menuName = name;
-      //TODO 跳转 path没把外部链接渲染上
-      // if(name.indexOf("企业商城") !=-1){
-      //   console.log(index)
-      //   window.open("https://www.baidu.com");
-      // }
     },
     //子菜单跳转外部链接
     mavChildClick(path){
       window.open(path);
-
     },
+    //控制箭头朝向
     menuClick() {
       if (this.menuClass == "glyphicon glyphicon-menu-down") {
         this.menuClass = "glyphicon glyphicon-menu-up";
@@ -153,12 +151,15 @@ export default {
       }
     },
     mobileNavClick(index,name,path){
-      //改变最顶上面的
-      this.menuName=name
-      console.log(name)
-      //显示下拉列表
       
-
+      if(name.indexOf("旗舰店") !=-1){
+        console.log("跳转外部链接============>")
+        window.open(path);
+        this.menuName="企业商城"
+      }else{
+        this.menuName=name
+      }
+      console.log(name);
     }
   }
 };
