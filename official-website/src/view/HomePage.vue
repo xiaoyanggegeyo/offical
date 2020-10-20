@@ -24,11 +24,11 @@
             <div id="bigData" class="container-fuild" style="width:100%;">
                 <div class="row bigData-container"  style="width:1202px">
                     <!-- 新闻动态 --> 
-                    <div class="col-xs-12 col-sm-12 col-md-4  zoomIn" style="margin-right:65px;overflow-y: scroll;height:400px">
+                    <div class="col-xs-12 col-sm-12 col-md-4  zoomIn" style="margin-right:65px;overflow-y: scroll;height:400px;overflow-y: hidden;">
                         <span class="bodyTitle">新闻动态</span>
                         <div style="border-top:1px solid #E4E4E4;margin-top:7px;width:359px;">
                             <!-- 遍历这个item组件 -->
-                            <div  style="border-bottom:1px dashed #E4E4E4;height:60px;line-height:60px;display:flex;" 
+                            <div  style="border-bottom:1px dashed #E4E4E4;height:60px;line-height:60px;display:flex;"  class="newItem"
                                   v-for="(info,infoindex) in InformationList" :key="infoindex" @click="showInfoDeail(info.id)">
                                 <span style="width:330px;word-break:break-all;flex:3;text-overflow: ellipsis;overflow:hidden;white-space:nowrap">{{info.title}}</span>
                                 <span style="margin-left:11px;color:#999999;flex:1;overflow:hidden">{{info.createtime}}</span>
@@ -70,7 +70,7 @@
             <div id="bigData" style="padding-top:0px;width:100%;" class="container-fuild" >
                 <div class="row bigData-container" style="width:1202px;">
                     <span class="bodyTitle">产品展示</span>
-                    <div style="border-top:1px solid #E4E4E4;margin-top:7px;">
+                    <div style="border-top:1px solid #E4E4E4;margin-top:7px;" class="product">
                         <!-- 遍历这个item组件 -->
                             <div v-for="(item,index) in GoodsList" :key="index" class="imgBox col-xs-6 col-sm-6 col-md-4" >
                                 <img :src=item.picUrl alt="产品展示" @click="showGoodsDetail(item.id)"/>
@@ -154,7 +154,7 @@ export default {
 
         })
         //获取产品列表
-        getGoodsList(4).then(res=>{
+        getGoodsList().then(res=>{
             this.GoodsList=res.data.items;
         }).catch(err=>{
 
@@ -420,6 +420,11 @@ export default {
     background-size: 100% 100%;
 }
 
+/* 新闻动态 */
+.newItem:hover{
+    background-color: #f4f4f4;
+}
+
 /* 产品展示 */
 
 .imgBox {
@@ -428,6 +433,9 @@ export default {
     margin-top: 9px;
     padding-left: 0;
     margin-right: 28px;
+}
+.imgBox:hover{
+    border: 1px solid #F71A1A;
 }
 
 .imgBox img {
@@ -443,6 +451,10 @@ export default {
     border-radius: 5px;
     margin-right: 30px;
     margin-bottom: 31px;
+}
+.card:hover{
+    box-shadow: 0 0 10px #000000;
+    opacity: 10;
 }
 
 /* 媒体查询（手机） */

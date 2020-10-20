@@ -14,8 +14,7 @@
           v-for="(item,index) in navList"
           :key="index"
           :class="index==navIndex?'active':''"
-          @click="navClick(index,item.name,item.path)"
-        >
+          @click="navClick(index,item.name,item.path)">
           <router-link :to="item.path">
             {{item.name}}
             <span v-if="item.children.length>0" class="glyphicon glyphicon-menu-down"></span>
@@ -87,6 +86,39 @@ export default {
       })
       this.mobileNavList.push(this.navList[5])
     })
+    //pc端吸顶效果
+    window.addEventListener("scroll",()=>{
+      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;  
+      let offsetTop = document.querySelector('.header-nav-wrapper').offsetTop;
+        if (scrollTop > offsetTop) {
+            //pc端吸顶
+            document.querySelector('.header-nav').style.position="fixed";
+            document.querySelector('.header-nav').style.top="0";
+            document.querySelector('.header-nav').style.zIndex="2";
+            // document.querySelector('.header-nav-wrapper').style.left="43.5%";
+            // document.querySelector('.header-nav-wrapper').style.backgroundColor="white";
+            //移动端吸顶
+            document.querySelector('.header-nav-m-menu').style.position="fixed";
+            document.querySelector('.header-nav-m-menu').style.width="100%";
+            document.querySelector('.header-nav-m-menu').style.top="0";
+            document.querySelector('.header-nav-m-menu').style.zIndex="2";
+        } else {
+            //pc端 吸顶恢复
+            document.querySelector('.header-nav').style.position="";
+            document.querySelector('.header-nav').style.top="";
+            //移动端 吸顶恢复
+            document.querySelector('.header-nav-m-menu').style.position="";
+            document.querySelector('.header-nav-m-menu').style.width="100%";
+            document.querySelector('.header-nav-m-menu').style.top="";
+            document.querySelector('.header-nav-m-menu').style.zIndex="";
+        }
+    })
+
+
+
+
+
+
   },
   data() {
     return {
@@ -151,7 +183,6 @@ export default {
       }
     },
     mobileNavClick(index,name,path){
-      
       if(name.indexOf("旗舰店") !=-1){
         console.log("跳转外部链接============>")
         window.open(path);
@@ -169,6 +200,7 @@ export default {
 #header {
   background: #ffffff;
   transition: all ease 0.6s;
+ 
 }
 #header .header-top {
   height: 50px;
@@ -186,6 +218,7 @@ export default {
   display: inline-block;
   margin-top: 30px;
   margin-bottom: 38px;
+  margin-left: 11%;
   font-size: 32px;
   font-family: PingFang-SC-Medium, PingFang-SC;
   font-weight: 500;
@@ -195,7 +228,10 @@ export default {
 }
 /* 导航栏 */
 #header .header-nav {
+  padding-right:11.5% ;
+  width: 100%;
   height: 110px;
+  background-color: white;
 }
 /* 导航栏logo */
 #header .header-nav .header-nav-logo {
@@ -203,6 +239,7 @@ export default {
   height: 100%;
   float: left;
   position: relative;
+  left: 10%;
 }
 /* 导航栏logo图片 */
 #header .header-nav .header-nav-logo img {
@@ -220,19 +257,25 @@ export default {
   line-height: 50px;
 }
 #header .header-nav .header-nav-wrapper {
-  position: fixed;
-  z-index: 9999;
   left: 50%;
   top: 5px;
   line-height: 110px;
   float: right;
   margin: 0;
-  max-width: 800px;
+  max-width: 750px;
 }
+/* 吸顶效果 */
+.set-top-position{
+  position: sticky;
+  top:0
+}
+
+
+
 /* 导航栏 每个导航 */
 #header .header-nav .header-nav-wrapper > li {
   float: left;
-  margin: 0 30px;
+  margin: 0 25px;
   position: relative;
 }
 /* 导航栏 每个导航下面的 a 链接 */
