@@ -230,6 +230,8 @@ export default {
                             },
                             area:['80%','550px'],
                             title: '产品详情',
+                            shade: true,//是否显示遮罩
+                            shadeClose: false,//点击遮罩是否关闭
                             cancel:()=>{
                                 
                             }
@@ -444,7 +446,7 @@ export default {
     height: 100%;
     border-radius: 4px;
 }
-
+/* 技术实例 */
 .card{
     width:324px;
     height:311px;
@@ -456,6 +458,8 @@ export default {
     box-shadow: 0 0 10px #000000;
     opacity: 10;
 }
+
+
 
 /* 媒体查询（手机） */
 @media screen and (max-width: 768px) {
