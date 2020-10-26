@@ -68,11 +68,11 @@
             </div>
             <!-- 产品展示-->
             <div id="bigData" style="padding-top:0px;width:100%;" class="container-fuild" >
-                <div class="row bigData-container" style="width:1202px;">
+                <div class=" bigData-container" style="width:1202px;">
                     <span class="bodyTitle">产品展示</span>
-                    <div style="border-top:1px solid #E4E4E4;margin-top:7px;" class="product">
+                    <div style="border-top:1px solid #E4E4E4;margin-top:7px;" class="row product">
                         <!-- 遍历这个item组件 -->
-                            <div v-for="(item,index) in GoodsList" :key="index" class="imgBox col-xs-6 col-sm-6 col-md-4" >
+                            <div v-for="(item,index) in GoodsList" :key="index" class="imgBox col-xs-12 col-sm-12 col-md-4" >
                                 <img :src=item.picUrl alt="产品展示" @click="showGoodsDetail(item.id)"/>
                             </div>
                     </div>    
@@ -108,7 +108,7 @@ import BMap from "BMap";
 import Card from "./homePage/component/card"
 import leftNav from './homePage/common/leftNav.vue';
 import goodsDetails from "./homePage/goodsDetails.vue"
-import {getActiveAdd,getInformationList,getGoodsList,getGoodsDetail,getTechnologyList} from "@/api/api.js"
+import {getActiveAdd,getInformationList,getGoodsList,getGoodsDetail,getTechnologyList,getTechnologyClassList} from "@/api/api.js"
 
 export default {
     name: "HomePage",
@@ -129,15 +129,8 @@ export default {
             TechnologyList:[],
             //记录左侧导航栏当前点击的下标
             currentNavIndex:0,
-
             // 首页 左侧导航栏 数据
-            dataList:[
-                "中医药馆",
-                "中医食善馆",
-                "药品房",
-                "中药种植基地",
-                "生产药厂"
-            ]   
+            dataList:[]   
         };
     },
     created(){
@@ -161,6 +154,9 @@ export default {
         })
         //获取技术实力列表 classid为第一个导航栏index
         this.getTechnologyLists(0);
+        //获得技术实力类目列表
+        this.getTechnologyClassList();
+
     },
     mounted() {
         /* banner-swiper */
@@ -225,7 +221,7 @@ export default {
                                 content: goodsDetails,
                                 parent: _this,
                                 data:{
-                                    detailsData:res.data.detail
+                                    detailsData:res.data
                                 }
                             },
                             area:['80%','550px'],
@@ -248,6 +244,16 @@ export default {
 
             })
         },
+        //技术实力类目列表
+        getTechnologyClassList(){
+            getTechnologyClassList().then(res=>{
+                this.dataList=res.data.list
+            })
+        },
+        
+
+
+
         //左侧导航栏 当前点击的条目下标
         currentNavMenu(index){
             this.currentNavIndex=index;
@@ -561,6 +567,10 @@ export default {
     }
     .CardtextBox .title{
         width: 10px;
+    }
+
+    .product{
+        width: 768px;
     }
 }
 

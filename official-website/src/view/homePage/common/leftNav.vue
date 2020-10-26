@@ -1,10 +1,10 @@
 
 <template>
 <!--  左侧导航栏 -->
-    <el-col style="width:140px;">
+    <el-col style="width:146px;">
      <el-menu style="border-right:0px solid #ccc;" class="el-menu-vertical-demo" active-menu-color="#00AD35">
-         <el-menu-item v-for="(item,index) in dataList" :key="index" @click="currentMenu(index)"  :class="currentTarget==index?'active':''">
-             <span slot="title">{{item}}</span>
+         <el-menu-item v-for="(item,index) in dataList" :key="index" @click="currentMenu(item.id)" style="padding:0 10px"  :class="currentTarget==item.id?'active':''">
+             <span slot="title">{{item.title}}</span>
          </el-menu-item>
      </el-menu>
     </el-col>
@@ -12,9 +12,12 @@
 <script>
 export default {
     name:"leftNav",
+    created(){
+        this.currentTarget=this.dataList[0].id
+    },
     data(){
         return{
-            //当前选中条目
+            //当前选中条目  数组中第一个
             currentTarget:0
         }
 
@@ -43,15 +46,6 @@ export default {
 .active{
    background:#00AD35;
    color: #FFFFFF;
-}
-/* 小三角 待完成 */
-.active::after{
-    /* display: inline-block;
-    content: "";
-    width: 5px;
-    height: 5px;
-    background: red;
-    margin-left: 90px; */
 }
 
 </style>

@@ -9,22 +9,18 @@
             <!-- 技术实力 -->
             <div id="bigData" style="padding-top:0px;width:100%;" class="container-fuild">
                 <div class="row bigData-container" style="width:1200px;margin:0 auto;overflow:hidden">
-                    <span class="bodyTitle">技术实力</span>
+                    <span class="bodyTitle">企业概况</span>
                     <div style="border-top:1px solid #E4E4E4;margin-top:7px;">              
                       <el-row  class="tac">
                            <!-- 导航组件 -->
                           <el-col style="width:140px;margin-top:41px;">
                              <left-nav :data-list="dataList" @currentNavMenu="currentNavMenu"/>
                           </el-col>
-                          <!-- 左侧内容区域 -->
+                          <!-- 右侧内容区域 -->
                           <el-col class="leftBox" style="margin-left:32px;margin-top:64px;width:80%;">
                               <!-- 公司简介 -->
-                              <div v-if="flag==0" class="row textBox" style="width:100%;">
-                                  <div class="content" v-html="CommpanyList[0].detail"></div>
-                              </div>
-                              <!-- 企业概况 -->
-                              <div v-if="flag==1" class="row textBox" style="width:100%;">
-                                  <div class="content" v-html="CommpanyList[1].detail"></div>
+                              <div  class="row textBox" style="width:100%;">
+                                  <div class="content" v-html="contentHtml"></div>
                               </div>
                           </el-col>
                       </el-row>          
@@ -54,26 +50,21 @@ export default {
         })
         //企业简介
         getCompanyList().then(res=>{
-            this.CommpanyList=res.data.list
+            //左侧导航栏
+            this.dataList=res.data.list
             console.log(res.data.list);
-            //获取导航栏信息
-            this.CommpanyList.forEach(commpany=>{
-                this.dataList.push(commpany.title);
-            })
+            //右侧内容 默认显示第一篇文章
+            this.contentHtml=res.data.list[0].detail  
         })
-
-
     },
     data() {
         return {
             //轮播图(单张)
             bannerList:{},
-            //文章
-            CommpanyList:[],
-            // 左侧导航栏
+            // 左侧导航栏+文章内容数据
             dataList:[],
-            //显示 0显示公司简介  1企业概况
-            flag:0
+            //当前显示的右侧页面
+            contentHtml:''
         };
     },
     mounted() {
@@ -130,13 +121,23 @@ export default {
             mobile: true,
             live: true,
         });
-        },methods:{
+        },
+        methods:{
             currentNavMenu(index){
-                if(index==0){
-                    this.flag=0
-                }else if(index==1){
-                    this.flag=1;
-                }
+                //点击哪个就显示哪个文章
+                this.dataList.forEach(item=>{
+                    if(index==item.id){
+                        this.contentHtml=item.detail;
+                        console.log("==========》当前显示的文章id  ")
+                        console.log(item.id)
+                        console.log(item.detail)
+                    }
+                })
+
+
+
+
+                // this.flag=index;
             }
         }
 };

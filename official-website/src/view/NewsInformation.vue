@@ -37,7 +37,7 @@ import Swiper from "swiper";
 import { WOW } from "wowjs";
 import BMap from "BMap";
 import leftNav from './homePage/common/leftNav.vue';
-import {getActiveAdd,getGoodsList,getGoodsDetail} from "@/api/api.js"
+import {getActiveAdd,getGoodsList,getGoodsDetail,getGoodsClassList} from "@/api/api.js"
 import goodsDetails from "./homePage/goodsDetails.vue"
 export default {
     name: "newsinformation",
@@ -53,6 +53,8 @@ export default {
         })
         //创建时默认classid为0  点击导航条的时候根据导航条传classid
         this.getGoodsList(0);
+        //左侧导航栏
+        this.getGoodsClassList();
     },
     data() {
         return {
@@ -61,13 +63,7 @@ export default {
              //技术实力
             TechnologyList:[],
             // TODO  首页 左侧导航栏 数据
-            dataList:[
-                "中医药馆",
-                "中医食善馆",
-                "药品房",
-                "中药种植基地",
-                "生产药厂"
-            ]
+            dataList:[]
         };
     },
     mounted() {
@@ -104,11 +100,18 @@ export default {
         getGoodsList(classId){
             getGoodsList(classId).then(res=>{
                 this.TechnologyList=res.data.items
-                console.log(this.TechnologyList);
             }).catch(err=>{
 
             })
         },
+        //获取左侧导航栏列表
+        getGoodsClassList(){
+            getGoodsClassList().then(res=>{
+                this.dataList=res.data.list;
+            })
+        },
+
+
         //左侧导航栏 当前点击的条目下标
         currentNavMenu(index){
             this.getGoodsList(index);
@@ -117,8 +120,6 @@ export default {
         //显示商品详情
          showGoodsDetail(goodsId){
             getGoodsDetail(goodsId).then(res=>{
-                console.log("产品详情==========》")
-                console.log(res)
                 if(!res.data){
                     this.$message("没有详情数据!");
                     return;
@@ -132,7 +133,7 @@ export default {
                                     detailsData:res.data
                                 }
                             },
-                            area:['70%','750px'],
+                            area:['70%','620px'],
                             title: '产品详情',
                             cancel:()=>{
                                 

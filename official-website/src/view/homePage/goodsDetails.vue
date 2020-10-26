@@ -31,8 +31,13 @@ export default {
         
     },
     created(){
-        //遍历detailUrl数组
-        this.imgList=this.detailsData.detailUrl.split(",");
+        //遍历detailUrl数组 有逗号才分割
+        if(this.detailsData.detailUrl.indexOf(",") != -1){
+            this.imgList=this.detailsData.detailUrl.split(",");
+        }else{
+            this.imgList.push(this.detailsData.detailUrl);
+        }
+        
     },
     data() {
         return{
