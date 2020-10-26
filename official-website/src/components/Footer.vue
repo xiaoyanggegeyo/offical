@@ -1,6 +1,6 @@
 <template>
-  <div id="footer" style="height:230px;background:#444444; overflow:hidden;">
-    <div style="margin-top:30px;display:flex;width:100%;">
+  <div id="footer" style="height:229px;background:#444444; overflow:hidden;">
+    <div style="margin:30px ;display:flex;width:100%;">
       <!-- 左盒子 -->
       <div style="flex:1;margin-left:250px;" class="leftBox">
         <div style="color:#FFFFFF;" class="name">关于宝林</div>
@@ -21,9 +21,11 @@
           </div>
       </div> 
     </div>
-    <p style="text-align: center;color:#ffffff">本站由 贵州玛峰科技有限公司提供技术支持 联系电话: 17138518551</p>
-    <p style="text-align: center;color:#ffffff">© 2020~2030 安顺市宝林中药饮片科技有限公司 | 京ICP备12031756号 | 京ICP证150143号 | 京公网安备11010502036099号</p>
-        
+    <!-- 下面盒子 -->
+    <div style="border-top:1px solid #ffffff;margin-top:20px;width:70%;margin:0 auto">
+      <p style="text-align: center;color:#ffffff;margin-top:12px">本站由 贵州玛峰科技有限公司提供技术支持 联系电话: 17138518551</p>
+      <p style="text-align: center;color:#ffffff">© 2020~2030 安顺市宝林中药饮片科技有限公司 | 京ICP备12031756号 | 京ICP证150143号 | 京公网安备11010502036099号</p>
+    </div>
        
   </div>
 </template>

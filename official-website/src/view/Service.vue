@@ -34,7 +34,7 @@ import { WOW } from "wowjs";
 import BMap from "BMap";
 import Card from "./homePage/component/card"
 import leftNav from './homePage/common/leftNav.vue';
-import {getActiveAdd,getTechnologyList} from "@/api/api.js"
+import {getActiveAdd,getTechnologyList,getTechnologyClassList} from "@/api/api.js"
 import appointment from './service/component/appointment.vue'
 export default {
     name: "service",
@@ -50,6 +50,8 @@ export default {
             console.log(err)
         })
         this.getTechnologyLists(0);
+        //获取技术实力类目
+        this.getTechnologyClassList();
     },
     data() {
         return {
@@ -59,13 +61,7 @@ export default {
             TechnologyList:[],
 
             // TODO  首页 左侧导航栏 数据
-            dataList:[
-                "中医药馆",
-                "中医食善馆",
-                    "药品房",
-                "中药种植基地",
-                "生产药厂"
-            ]
+            dataList:[]
             
             
          
@@ -109,6 +105,13 @@ export default {
 
             })
         },
+        //技术实力 类目
+        getTechnologyClassList(){
+            getTechnologyClassList().then(res=>[
+                this.dataList=res.data.list
+            ])
+        },
+        
         //左侧导航栏 当前点击的条目下标
         currentNavMenu(index){
             this.currentNavIndex=index;

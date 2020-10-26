@@ -52,7 +52,6 @@ export default {
         getCompanyList().then(res=>{
             //左侧导航栏
             this.dataList=res.data.list
-            console.log(res.data.list);
             //右侧内容 默认显示第一篇文章
             this.contentHtml=res.data.list[0].detail  
         })
@@ -128,16 +127,8 @@ export default {
                 this.dataList.forEach(item=>{
                     if(index==item.id){
                         this.contentHtml=item.detail;
-                        console.log("==========》当前显示的文章id  ")
-                        console.log(item.id)
-                        console.log(item.detail)
                     }
                 })
-
-
-
-
-                // this.flag=index;
             }
         }
 };

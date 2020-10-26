@@ -146,9 +146,13 @@ export default {
         }).catch(err=>{
 
         })
-        //获取产品列表
+        //获取产品列表  展示16个
         getGoodsList().then(res=>{
-            this.GoodsList=res.data.items;
+            if(res.data.items.length <= 16){
+                this.GoodsList=res.data.items;
+            }else if(res.data.items.length>16){
+                this.GoodsList= res.data.items.slice(0,15)
+            }
         }).catch(err=>{
 
         })
@@ -240,8 +244,6 @@ export default {
         getTechnologyLists(classId){
             getTechnologyList(classId).then(res=>{
                 this.TechnologyList=res.data.items
-            }).catch(err=>{
-
             })
         },
         //技术实力类目列表
@@ -250,10 +252,6 @@ export default {
                 this.dataList=res.data.list
             })
         },
-        
-
-
-
         //左侧导航栏 当前点击的条目下标
         currentNavMenu(index){
             this.currentNavIndex=index;
@@ -271,10 +269,6 @@ export default {
                 });
             localStorage.setItem("informationId",informationId);
         }
-
-
-
-
     }
 };
 </script>
