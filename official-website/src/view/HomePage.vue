@@ -137,8 +137,6 @@ export default {
         // 获取轮播图
         getActiveAdd(1).then(res=>{
             this.bannerList=res.data
-        }).catch(err=>{
-            console.log(err)
         })
         //获取新闻列表
         getInformationList().then(res=>{

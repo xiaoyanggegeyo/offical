@@ -13,17 +13,13 @@
 export default {
     name:"leftNav",
     created(){
-        // this.currentTarget=this.dataList[0].id
-        console.log("左侧导航栏打印==============》")
-        console.log(this.dataList)
-        // console.log(this.dataList[0].id);
+       console.log(this.dataList);
     },
     data(){
         return{
             //当前选中条目  数组中第一个
             currentTarget:''
         }
-
     },
     props:{
         //具体显示的条目内容
@@ -32,6 +28,11 @@ export default {
             default(){
                 return []
             }
+        }
+    },
+    watch:{
+        dataList:function(newVal,oldVal){
+            this.currentTarget=newVal[0].id
         }
     },
     methods:{
