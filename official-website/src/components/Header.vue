@@ -23,7 +23,7 @@
           <!-- 子菜单 -->
           <dl v-if="item.children.length>0">
             <dt v-for="(i,index) in item.children" :key="index" @click="mavChildClick(i.path)" class="childMenu">
-              <router-link :to="i.path" style="color:#333333">{{i.name}}</router-link>
+              <router-link :to="i.path" tag="span" style="color:#333333;">{{i.name}}</router-link>
             </dt>
           </dl>
         </li>
@@ -358,6 +358,10 @@ export default {
 /* 企业商城二级下拉 鼠标选中颜色 */
 .childMenu:hover{
   background-color: #01A946 !important;
+  
+}
+.childMenu span:hover{
+  color: #ffffff !important;
 }
 
 

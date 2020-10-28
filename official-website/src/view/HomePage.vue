@@ -51,7 +51,7 @@
     
                             <span style="position: absolute;left:64px;top:14px; color: #FFFFFF;line-height: 19px;">服务热线</span>
     
-                            <span style="position: absolute;left:64px;top:34px;color: #FFFFFF;line-height: 19px;">0808-281920-00</span>
+                            <span style="position: absolute;left:64px;top:34px;color: #FFFFFF;line-height: 19px;">851-33770666</span>
     
                             <img src="@/assets/img/contact.png" alt="联系我们" style="display:inline-bloack;width:100%;height:100%">
     
@@ -59,9 +59,9 @@
     
                         <div id="map" class="wow zoomIn" style="display:block;height:211px;width:212px"></div>
     
-                        <div style="margin-top:18px;word-break:break-all;width:205px;height:40px;color:#888888;font-size:14px;">公司地址: 贵阳市南明区亚太中心 贵阳市南明区亚太中心</div>
+                        <div style="margin-top:18px;word-break:break-all;width:205px;height:40px;color:#888888;font-size:14px;">公司地址: 贵州省安顺经济技术开发区双新路42号 </div>
     
-                        <div style="margin-top:12px;color:#888888;font-size:14px;">传真号码: 17138518551</div>
+                        <div style="margin-top:12px;color:#888888;font-size:14px;">传真号码: 0851-33732666</div>
     
                     </div>
                 </div>
@@ -170,8 +170,7 @@ export default {
             autoplay: {
                 delay: 5000,
                 stopOnLastSlide: false,
-                disableOnInteraction: false,
-                
+                disableOnInteraction: false
             },
             // 如果需要分页器
             pagination: {
@@ -202,13 +201,13 @@ export default {
         wow.init();
         // 地图
         var map = new BMap.Map("map"); // 创建地图实例
-        var point = new BMap.Point(104.58765, 26.47954); // 创建点坐标
+        var point = new BMap.Point(105.892929, 26.22883); // 创建点坐标
         map.centerAndZoom(point, 18); // 初始化地图，设置中心点坐标和地图级别
         map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
         var marker = new BMap.Marker(point); // 创建标注
         map.addOverlay(marker); // 将标注添加到地图中
         var infoWindow = new BMap.InfoWindow(
-            "公司地址"
+            "公司地址: 贵州省安顺经济技术开发区双新路42号"
         ); // 创建信息窗口对象
         map.openInfoWindow(infoWindow, map.getCenter()); // 打开信息窗
     },
@@ -241,6 +240,8 @@ export default {
         //技术实力 列表(页面初始化调一次 classid为第一个导航条   点击时调一次classid为当前点击的classid)
         getTechnologyLists(classId){
             getTechnologyList(classId).then(res=>{
+                console.log("==================》")
+                console.log(res)
                 this.TechnologyList=res.data.items
             })
         },

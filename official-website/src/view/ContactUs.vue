@@ -6,31 +6,34 @@
       </a>     
     </div>
     <div class="container" >
-      <div class="container-fuild ContactUs-container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12">
-            <span class="bodyTitle">联系我们</span> 
-              <div class="contentBox" style="border-top:1px solid #E4E4E4;padding-top:11px;margin-top:7px;width:100%;display:flex;">
-                <!-- 左边 -->
-                <div style="margin-top:67px;margin-bottom:90px;line-height:20px">
-                  <p style="color:#444444;font-size:16px;">联系方式</p>
-                  <p style="color:#888888;font-size:14px;margin-top:30px">电子邮箱: 2030508340@qq.com</p>
-                  <p style="color:#888888;font-size:14px">服务热线: 010-3829-392</p>
-                  <p style="color:#888888;font-size:14px">传真号码: 17138518551</p>
-                </div>
-                <!-- 右边 -->
-                 <div style="margin-top:67px;margin-left:288px;">
-                  <p >公司地址</p>
-                  <p style="color:#888888;font-size:14px;margin-top:30px">公司地址: 贵阳市南明区亚太中心<br/>贵阳市南明区亚太中心</p>
-                </div>
-              </div>
+      <div class="container-fuild ContactUs-container ">
+          <span class="bodyTitle">联系我们</span> 
+          <div class="row" style="border-top:1px solid #E4E4E4;padding-top:11px;margin-top:7px;width:100%;">
+            <!-- 左边 -->
+            <div class="col-xs-12 col-sm-12 col-md-4" style="margin-top:67px;margin-bottom:90px;line-height:20px">
+              <p style="color:#444444;font-size:16px;">联系方式</p>
+              <p style="color:#888888;font-size:14px;margin-top:30px">电子邮箱: 492955044@qq.com</p>
+              <p style="color:#888888;font-size:14px">服务热线: 0851-33770666</p>
+              <p style="color:#888888;font-size:14px">公司传真: 0851-33732666</p>
+            </div>
+            <!-- 中间 -->
+            <div class="col-xs-12 col-sm-12 col-md-4" style="margin-top:67px;">
+              <p>公司地址</p>
+              <p style="color:#888888;font-size:14px;margin-top:30px;m">贵州省安顺经济技术开发区双新路42号<br/><br/>安顺市宝林科技中药饮片有限公司</p>
+            </div>     
+           <!-- 右边 -->
+           <div class="col-xs-12 col-sm-12 col-md-4" style="margin-top:67px;">
+             <img src="@/assets/img/qrCode.png" alt="" style="display:block;width:95%;height:50%;">
+           </div>
           </div>
-          <div class="col-xs-12 col-sm-12 col-md-12">
-            <div id="map" class=" "></div>
-          </div>
-        </div>
       </div>
+      <div style="margin-bottom:40px;">
+            <div id="map" class=" "></div>
+      </div>
+          
+
     </div>
+         
   </div>
 </template>
 <script>
@@ -56,7 +59,7 @@ export default {
   },
   mounted() {
     var map = new BMap.Map("map"); // 创建地图实例
-    var point = new BMap.Point(104.58765,26.47954); // 创建点坐标
+    var point = new BMap.Point(105.892929,26.22883); // 创建点坐标
     map.centerAndZoom(point, 18); // 初始化地图，设置中心点坐标和地图级别
     map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
     var marker = new BMap.Marker(point); // 创建标注

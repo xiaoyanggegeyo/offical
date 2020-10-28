@@ -3,7 +3,7 @@
 <!--  左侧导航栏 -->
     <el-col style="width:146px;">
      <el-menu style="border-right:0px solid #ccc;" class="el-menu-vertical-demo" active-menu-color="#00AD35">
-         <el-menu-item v-for="(item,index) in dataList" :key="index" @click="currentMenu(item.id)" style="padding:0 10px" :class="currentTarget==item.id?'active':''">
+         <el-menu-item v-for="(item,index) in dataList" :key="index" @click="currentMenu(item.id)" style="padding:0 10px;color:#333333" :class="currentTarget==item.id?'active':''">
              <span slot="title">{{item.title}}</span>
          </el-menu-item>
      </el-menu>
@@ -49,7 +49,7 @@ export default {
 
 .active{
    background:#00AD35;
-   color: #FFFFFF;
+   color: #FFFFFF !important;
 }
 
 </style>
