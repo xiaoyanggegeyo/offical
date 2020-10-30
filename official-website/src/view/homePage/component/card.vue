@@ -5,7 +5,7 @@
         </div>
         <div class="textBox">
             <div class="title">{{TechnologyItem.name}}</div>
-            <div class="title2">中国医药</div>
+            <div class="title2">{{TechnologyItem.subtitle}}</div>
             <div class="title3">
                 <div style=" display: inline-block;width:90px;height:20px;overflow:hidden;color:#999999;">{{TechnologyItem.createtime}}</div>
                 <span class="num">{{TechnologyItem.praiseNum}} <i class="icon iconfont" :class="TechnologyItem.praiseStatus==1?'active':''" @click="PraiseHandler(TechnologyItem.id)"></i></span>

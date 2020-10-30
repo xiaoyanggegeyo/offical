@@ -25,7 +25,8 @@
                 <div class="row bigData-container"  style="width:1202px">
                     <!-- 新闻动态 --> 
                     <div class="col-xs-12 col-sm-12 col-md-4  zoomIn" style="margin-right:65px;overflow-y: scroll;height:400px;overflow-y: hidden;">
-                        <span class="bodyTitle">新闻动态</span>
+                        <span :class="showContentFlag==0?'bodyTitle':''" @click="showContent(0)" style="cursor:default">新闻动态</span>
+                        <span :class="showContentFlag==1?'bodyTitle':''" style="margin-left:20px;cursor:default" @click="showContent(1)">公告</span>
                         <div style="border-top:1px solid #E4E4E4;margin-top:7px;width:359px;">
                             <!-- 遍历这个item组件 -->
                             <div  style="border-bottom:1px dashed #E4E4E4;height:60px;line-height:60px;display:flex;"  class="newItem"
@@ -44,25 +45,15 @@
                     </div>
                     <!-- 联系我们 --> 
                     <div class="col-xs-12 col-sm-12 col-md-4" style="width:211px;">
-    
                         <span style=" color:#01A946;font-size: 16px;line-height: 22px;padding-bottom: 8px;">联系我们</span>
-    
                         <div style="width:212px;height:58px; position: relative;">
-    
                             <span style="position: absolute;left:64px;top:14px; color: #FFFFFF;line-height: 19px;">服务热线</span>
-    
                             <span style="position: absolute;left:64px;top:34px;color: #FFFFFF;line-height: 19px;">851-33770666</span>
-    
                             <img src="@/assets/img/contact.png" alt="联系我们" style="display:inline-bloack;width:100%;height:100%">
-    
                         </div>
-    
                         <div id="map" class="wow zoomIn" style="display:block;height:211px;width:212px"></div>
-    
                         <div style="margin-top:18px;word-break:break-all;width:205px;height:40px;color:#888888;font-size:14px;">公司地址: 贵州省安顺经济技术开发区双新路42号 </div>
-    
                         <div style="margin-top:12px;color:#888888;font-size:14px;">传真号码: 0851-33732666</div>
-    
                     </div>
                 </div>
             </div>
@@ -74,6 +65,7 @@
                         <!-- 遍历这个item组件 -->
                             <div v-for="(item,index) in GoodsList" :key="index" class="imgBox col-xs-12 col-sm-12 col-md-4" >
                                 <img :src=item.picUrl alt="产品展示" @click="showGoodsDetail(item.id)"/>
+                                <div style="text-align: center;">{{item.name}}</div>
                             </div>
                     </div>    
                 </div>
@@ -108,7 +100,8 @@ import BMap from "BMap";
 import Card from "./homePage/component/card"
 import leftNav from './homePage/common/leftNav.vue';
 import goodsDetails from "./homePage/goodsDetails.vue"
-import {getActiveAdd,getInformationList,getGoodsList,getGoodsDetail,getTechnologyList,getTechnologyClassList} from "@/api/api.js"
+import announcementDetail from './homePage/announcementDetail.vue'
+import {getActiveAdd,getInformationList,getGoodsList,getGoodsDetail,getTechnologyList,getTechnologyClassList,getAnnouncementList} from "@/api/api.js"
 
 export default {
     name: "HomePage",
@@ -123,6 +116,10 @@ export default {
             bannerList:[],
             //新闻动态
             InformationList:[],
+            //公告列表
+            AnnouncementList:[],
+            //显示新闻 0 or 公告 1
+            showContentFlag:0,
             //产品展示
             GoodsList:[],
             //技术实力(双向绑定 重新赋值 实现数据点击刷新)
@@ -130,7 +127,7 @@ export default {
             //记录左侧导航栏当前点击的下标
             currentNavIndex:0,
             // 首页 左侧导航栏 数据
-            dataList:[]   
+            dataList:[]  
         };
     },
     created(){
@@ -141,9 +138,9 @@ export default {
         //获取新闻列表
         getInformationList().then(res=>{
             this.InformationList=res.data.items
-        }).catch(err=>{
-
         })
+        //获取公告列表
+        this.getAnnouncementList();
         //获取产品列表  展示16个
         getGoodsList().then(res=>{
             if(res.data.items.length <= 16){
@@ -151,8 +148,6 @@ export default {
             }else if(res.data.items.length>16){
                 this.GoodsList= res.data.items.slice(0,15)
             }
-        }).catch(err=>{
-
         })
         //获取技术实力列表 classid为第一个导航栏index
         this.getTechnologyLists(0);
@@ -233,15 +228,11 @@ export default {
                                 
                             }
                             });
-            }).catch(err=>{
-
             })
         },
         //技术实力 列表(页面初始化调一次 classid为第一个导航条   点击时调一次classid为当前点击的classid)
         getTechnologyLists(classId){
             getTechnologyList(classId).then(res=>{
-                console.log("==================》")
-                console.log(res)
                 this.TechnologyList=res.data.items
             })
         },
@@ -262,11 +253,62 @@ export default {
         },
         //查看新闻详情
         showInfoDeail(informationId){
-            this.router.push({
+            if(this.showContentFlag==0){
+                 this.router.push({
                 path:"/infoDetail",
                 name:"infoDetail",
                 });
-            localStorage.setItem("informationId",informationId);
+                localStorage.setItem("informationId",informationId);
+            }else if(this.showContentFlag==1){
+                //根据id 取集合中对象的detail 开启弹窗 传过去
+                let announcement={};
+                this.TechnologyList.forEach(item => {
+                    if(item.id==informationId){
+                        announcement=item
+                    }
+                });
+                this.$layer.iframe({
+                            content: {
+                                content: announcementDetail,
+                                parent: this,
+                                data:{
+                                    detailData:announcement.detail
+                                }
+                            },
+                            area:['80%','550px'],
+                            title: '公告详情',
+                            shade: true,//是否显示遮罩
+                            shadeClose: false,//点击遮罩是否关闭
+                            cancel:()=>{
+                                
+                            }
+                            });
+
+
+
+
+            }
+           
+        },
+        //公告列表
+        getAnnouncementList(){
+            getAnnouncementList().then(res=>{
+                this.AnnouncementList=res.data
+            });
+        },
+        //显示新闻详情 or 公告
+        showContent(index){
+            this.showContentFlag=index
+            //点击index==1请求公告数据
+            if(index==1){
+                getAnnouncementList().then(res=>{
+               this.InformationList=res.data;
+                })
+            }else if(index==0){
+                 getInformationList().then(res=>{
+                 this.InformationList=res.data.items
+                })
+            }
         }
     }
 };
@@ -292,6 +334,7 @@ export default {
 #swiper .banner-swiper .swiper-slide img {
     width: 100%;
     height: 100%;
+
 }
 
 #swiper .banner-swiper .swiper-slide {
@@ -434,6 +477,7 @@ export default {
     margin-top: 9px;
     padding-left: 0;
     margin-right: 28px;
+    margin-top: 20px;
 }
 .imgBox:hover{
     border: 1px solid #F71A1A;
@@ -442,7 +486,7 @@ export default {
 .imgBox img {
     display: inline-block;
     width: 100%;
-    height: 100%;
+    height: 89%;
     border-radius: 4px;
 }
 /* 技术实例 */
@@ -455,7 +499,7 @@ export default {
 }
 .card:hover{
     box-shadow: 0 0 10px #000000;
-    opacity: 10;
+    opacity: 0.8;
 }
 
 
@@ -470,10 +514,6 @@ export default {
         margin-top: 30px;
         margin-bottom: 30px;
     }
-
-
-
-
 
     #swiper {
         height: 200px;

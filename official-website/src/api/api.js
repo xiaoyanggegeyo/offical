@@ -14,6 +14,14 @@ export function getInformationList(){
         params: { pageNo: 1 ,pageSize:10}
       })
 }
+//公告列表
+export function getAnnouncementList(){
+    return Service({
+        url:'api/commom/getAnnouncementList',
+        params:{}
+    })
+}
+
 //产品列表
 export function  getGoodsList(classId){
     return Service({

@@ -18,9 +18,10 @@
                                    <div  v-for="(item,index) in TechnologyList" :key="index" class=" col-xs-12 col-sm-12 col-md-4">
                                             <div class="CardimgBox" @click="showGoodsDetail(item.id)">
                                                 <img   :src="item.picUrl" alt="">
+                                                <div class="title">{{item.name}}</div>
                                             </div>
                                             <div class="CardtextBox">
-                                                <div class="title">{{item.name}}</div>
+                                                
                                             </div>
                                   </div>
                               </div>
@@ -49,20 +50,17 @@ export default {
         // 获取轮播图
         getActiveAdd(2).then(res=>{
             this.bannerList=res.data[0]
-        }).catch(err=>{
         })
-        //创建时默认classid为0  点击导航条的时候根据导航条传classid
-        this.getGoodsList(0);
-        //左侧导航栏
-        this.getGoodsClassList();
+          //左侧导航栏
+        this.getGoodsClassList();    
     },
     data() {
         return {
-              //轮播图(单张)
+            //轮播图(单张)
             bannerList:{},
-             //技术实力
+            //技术实力
             TechnologyList:[],
-            // TODO  首页 左侧导航栏 数据
+            //首页 左侧导航栏 数据
             dataList:[]
         };
     },
@@ -96,27 +94,27 @@ export default {
         });
     },
     methods:{
-         //技术实力 列表(页面初始化调一次 classid为第一个导航条   点击时调一次classid为当前点击的classid)
+        //获取左侧导航栏列表
+        getGoodsClassList(){
+            let that=this;
+            getGoodsClassList().then(res=>{
+                this.dataList=res.data.list;
+                //获取第一个classid 渲染列表
+                if(res.data.list.size !=0){
+                    that.getGoodsList(res.data.list[0].id);
+                }
+            })
+        },
+        //技术实力 列表
         getGoodsList(classId){
             getGoodsList(classId).then(res=>{
                 this.TechnologyList=res.data.items
-            }).catch(err=>{
-
             })
         },
-        //获取左侧导航栏列表
-        getGoodsClassList(){
-            getGoodsClassList().then(res=>{
-                this.dataList=res.data.list;
-            })
-        },
-
-
-        //左侧导航栏 当前点击的条目下标
+        //左侧导航栏 当前点击的条目下标(classid)
         currentNavMenu(index){
             this.getGoodsList(index);
         },
-        //商品详情
         //显示商品详情
          showGoodsDetail(goodsId){
             getGoodsDetail(goodsId).then(res=>{
@@ -139,8 +137,6 @@ export default {
                                 
                             }
                             });
-            }).catch(err=>{
-
             })
         }
     }
@@ -270,10 +266,17 @@ export default {
     padding-right: 0px;
    
 }
+ .title{
+        text-align: center;
+    }
+
+.CardimgBox:hover{
+    border: 1px solid #F71A1A;
+}
 .CardimgBox img{
     display: block;
     width: 100%;
-    height: 100%;
+    height: 94.5%;
 }
 .CardtextBox{
     width: 300px;

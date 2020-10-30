@@ -298,6 +298,12 @@ export default {
     margin-bottom: 31px;
 }
 
+.card:hover{
+    box-shadow: 0 0 10px #000000;
+    opacity: 0.8;
+}
+
+
 
 
 /* 媒体查询（手机） */
