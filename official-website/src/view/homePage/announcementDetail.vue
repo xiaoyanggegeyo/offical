@@ -1,6 +1,7 @@
 
 <template>
-  <div v-html="detailData">
+  <div v-html="detailData" style="padding:15px">
+   
 
   </div>
 </template>

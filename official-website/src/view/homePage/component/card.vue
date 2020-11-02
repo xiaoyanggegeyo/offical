@@ -2,6 +2,7 @@
     <div>
         <div class="imgBox">
             <img :src="TechnologyItem.picUrl" alt="" @click="showAppointment">
+            <div v-if="TechnologyItem.conventionType==1" class="convention" @click="conventionHandle(TechnologyItem.id)">预约到店</div>
         </div>
         <div class="textBox">
             <div class="title">{{TechnologyItem.name}}</div>
@@ -52,6 +53,28 @@ export default {
         showAppointment(){
                this.router.push("/technologydetail");
                localStorage.setItem("technologyId",this.TechnologyItem.id);
+        },
+        //预约处理
+        conventionHandle(id){
+            this.$layer.iframe({
+                            content: {
+                                content: appointment,
+                                parent: this,
+                                data:{
+                                }
+                            },
+                            area:['90%','701px'],
+                            title: '预约',
+                            cancel:()=>{
+                                
+                            }
+                            });
+
+
+
+
+
+
         }
     },
     props:{
@@ -69,14 +92,30 @@ export default {
     width: 324px;
     height: 183px;
     padding-right: 0px;
+    position: relative;
    
+}
+/* 预约 */
+.convention{
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    opacity: 0.53;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: PingFang-SC-Regular, PingFang-SC;
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 42px;
+    background: #000000;
+    width: 100%;
+    height: 46px;
 }
 .imgBox img{
     display: block;
     width: 100%;
     height: 100%;
     border-radius: 8px 8px 0px 0px;
-   
 }
 .textBox{
     width: 100%;

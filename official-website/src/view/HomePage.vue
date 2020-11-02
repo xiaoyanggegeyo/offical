@@ -233,6 +233,7 @@ export default {
         //技术实力 列表(页面初始化调一次 classid为第一个导航条   点击时调一次classid为当前点击的classid)
         getTechnologyLists(classId){
             getTechnologyList(classId).then(res=>{
+                console.log(res.data.items)
                 this.TechnologyList=res.data.items
             })
         },
@@ -260,9 +261,10 @@ export default {
                 });
                 localStorage.setItem("informationId",informationId);
             }else if(this.showContentFlag==1){
+                console.log(informationId)
                 //根据id 取集合中对象的detail 开启弹窗 传过去
                 let announcement={};
-                this.TechnologyList.forEach(item => {
+                this.InformationList.forEach(item => {
                     if(item.id==informationId){
                         announcement=item
                     }
@@ -283,10 +285,6 @@ export default {
                                 
                             }
                             });
-
-
-
-
             }
            
         },
@@ -302,11 +300,11 @@ export default {
             //点击index==1请求公告数据
             if(index==1){
                 getAnnouncementList().then(res=>{
-               this.InformationList=res.data;
+                    this.InformationList=res.data;
                 })
             }else if(index==0){
                  getInformationList().then(res=>{
-                 this.InformationList=res.data.items
+                    this.InformationList=res.data.items
                 })
             }
         }
