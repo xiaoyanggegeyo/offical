@@ -55,3 +55,12 @@ html,body,ul,li,ol,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,fieldset,legend,img {
     background-color: rgba(0, 0, 0, 0.4) !important;
   }
 
+/* 隐藏滚动条 但是可以滑 */
+.element::-webkit-scrollbar { width: 0 !important }
+
+ 
+.element { -ms-overflow-style: none; }
+
+ 
+.element { overflow: -moz-scrollbars-none; }
+
