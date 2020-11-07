@@ -321,7 +321,7 @@ export default {
 /* 轮播图 */
 
 #swiper {
-    height: 600px;
+    height: 540px;
 }
 
 #swiper .banner-swiper {

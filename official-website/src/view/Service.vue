@@ -1,7 +1,7 @@
 <template>
     <div id="HomePage">
         <!-- 轮播图 -->
-        <div style="width:100%;height:600px;margin-bottom:30px" class="container-fuild">
+        <div style="width:100%;height:540px;margin-bottom:30px" class="container-fuild">
             <a :href="bannerList.link">
                 <img style="display:block;height:100%;width:100%" :src="bannerList.bannerUrl" alt="">
             </a>   
@@ -155,7 +155,7 @@ export default {
 /* 轮播图 */
 
 #swiper {
-    height: 600px;
+    height:540px;
 }
 
 #swiper .banner-swiper {
