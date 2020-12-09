@@ -28,7 +28,7 @@ export function  getGoodsList(classId){
         url:"api/commom/getGoodsList",
         params:{
             pageNo:1,
-            pageSize:10,
+            pageSize:40,
             classId:classId
         }
     })

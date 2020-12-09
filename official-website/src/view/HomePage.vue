@@ -143,10 +143,10 @@ export default {
         this.getAnnouncementList();
         //获取产品列表  展示16个
         getGoodsList().then(res=>{
-            if(res.data.items.length <= 16){
+            if(res.data.items.length <= 14){
                 this.GoodsList=res.data.items;
             }else if(res.data.items.length>16){
-                this.GoodsList= res.data.items.slice(0,15)
+                this.GoodsList= res.data.items.slice(0,14)
             }
         })
         //获取技术实力列表 classid为第一个导航栏index
