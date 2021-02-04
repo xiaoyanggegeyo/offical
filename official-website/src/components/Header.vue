@@ -7,7 +7,7 @@
       <div class="header-nav-logo">
         <img src="@/assets/img/logo.jpg">
       </div>
-      <div class="bigTitle">中药饮片</div>
+      <div class="bigTitle">安顺宝林科技中药饮片有限公司</div>
       <!-- 导航内容 -->
       <ul class="header-nav-wrapper">
         <li
@@ -95,8 +95,6 @@ export default {
             document.querySelector('.header-nav').style.position="fixed";
             document.querySelector('.header-nav').style.top="0";
             document.querySelector('.header-nav').style.zIndex="2";
-            // document.querySelector('.header-nav-wrapper').style.left="43.5%";
-            // document.querySelector('.header-nav-wrapper').style.backgroundColor="white";
             //移动端吸顶
             document.querySelector('.header-nav-m-menu').style.position="fixed";
             document.querySelector('.header-nav-m-menu').style.width="100%";
@@ -184,22 +182,20 @@ export default {
     },
     mobileNavClick(index,name,path){
       if(name.indexOf("旗舰店") !=-1){
-        console.log("跳转外部链接============>")
         window.open(path);
         this.menuName="企业商城"
       }else{
         this.menuName=name
       }
-      console.log(name);
     }
   }
 };
 </script>
-<style scoped>
+<style  scoped>
 /* 顶部 */
 #header {
-  background: #ffffff;
-  transition: all ease 0.6s;
+  /* transition: all ease 0.6s; */
+  
  
 }
 #header .header-top {
@@ -222,7 +218,7 @@ export default {
   font-size: 32px;
   font-family: PingFang-SC-Medium, PingFang-SC;
   font-weight: 500;
-  color: #01A946;
+  color:#A9752B;
   line-height: 45px;
   text-align: center;
 }
@@ -231,7 +227,8 @@ export default {
   padding-right:11.5% ;
   width: 100%;
   height: 110px;
-  background-color: white;
+  background-image: url("~@/assets/img/homePage_top.png")
+  /* background-color: white; */
 }
 /* 导航栏logo */
 #header .header-nav .header-nav-logo {
@@ -297,7 +294,7 @@ export default {
   height: 2px;
   opacity: 0;
   transition: all 0.6s ease;
-  background-color: #01A946;
+  background-color: #DB0C18;
 }
 /* 导航栏 每个导航下面的 a 链接的右侧小三角 */
 #header .header-nav .header-nav-wrapper > li > a > span {
@@ -306,7 +303,7 @@ export default {
 }
 /* 导航栏 每个导航下面的 a 链接 鼠标滑上去的样式 */
 #header .header-nav .header-nav-wrapper > li > a:hover {
-  color: #01A946;
+  color: #DB0C18;
   text-decoration: none;
 }
 /* 导航栏 每个导航下面的 a 链接 鼠标滑上去下划线的样式 */
@@ -321,9 +318,9 @@ export default {
 }
 /* 导航栏 每个导航下面的 a 链接 鼠标点击后的样式 */
 #header .header-nav .header-nav-wrapper > li.active > a {
-  color: #01A946;
+  color:#DB0C18;
   text-decoration: none;
-  border-bottom: 2px solid #01A946;
+  border-bottom: 2px solid #DB0C18;
 }
 /* 导航栏 每个导航下面的二级导航容器 */
 #header .header-nav .header-nav-wrapper > li > dl {

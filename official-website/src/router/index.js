@@ -48,14 +48,6 @@ export default new Router({
               meta: {
                 title: '软件产品丨智能小镇管理系统'
               }
-            },
-            {
-              path: '/software/bigData',
-              name: 'software',
-              component: resolve => require(['@/view/Software_bigData'], resolve),
-              meta: {
-                title: '软件产品丨大数据管理系统'
-              }
             }
           ]
         }, {
@@ -79,13 +71,6 @@ export default new Router({
           component: resolve => require(['@/view/NewsInformation'], resolve),
           meta: {
             title: '产品展示'
-          }
-        }, {
-          path: '/companyintroduction',
-          name: 'companyintroduction',
-          component: resolve => require(['@/view/CompanyIntroduction'], resolve),
-          meta: {
-            title: '企业商城'
           }
         }, {
           path: '/contactus',

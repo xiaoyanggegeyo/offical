@@ -8,17 +8,24 @@
                         <a :href="item.link">
                             <img class="swiper-lazy" :src="item.bannerUrl" alt="轮播图">
                         </a>
-                        <!-- <div class="swiper-lazy-preloader"></div> -->
                     </div>
                 </div>
                 <!-- 如果需要分页器 -->
                 <div class="swiper-pagination"></div>
-                
-                <!-- 如果需要导航按钮 -->
-                <!-- <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div> -->
             </div>
         </div>
+        <!-- 新闻与公告 -->
+        <div class="newsBox">
+
+        </div>
+
+
+
+
+
+
+
+
         <div style="width:1202px;" id="bodyBox">
           <!-- 概要 -->
             <div id="bigData" class="container-fuild" style="width:100%;">
@@ -375,6 +382,12 @@ export default {
    width: 0.4rem;
    height: 0.3rem;
    border-radius: 50%;
+}
+/* 新闻公告 */
+.newsBox{
+    width: 100%;
+    background-color: #F5F5F5;
+    padding: 25px 391px 23px 196px;
 }
 
 
