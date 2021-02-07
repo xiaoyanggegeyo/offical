@@ -62,6 +62,7 @@ export default {
 .goodDetail{
     width: 100%;
     overflow-x: hidden;
+    
 }
 .name{
     margin-top: 44px;
@@ -79,13 +80,14 @@ export default {
     width: 90%;
     margin: 30px 59px 50px 59px;
     display: flex;
-    overflow-x: scroll;
+    overflow-x: hidden;
 
 }
 .imgBox{
     width: 140px;
     height: 140px;
     margin-right: 27px;
+    
    
 }
 .imgBox img{

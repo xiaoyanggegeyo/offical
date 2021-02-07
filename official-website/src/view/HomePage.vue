@@ -15,89 +15,57 @@
             </div>
         </div>
         <!-- 新闻与公告 -->
-        <div class="newsBox">
-
-        </div>
-
-
-
-
-
-
-
-
-        <div style="width:1202px;" id="bodyBox">
-          <!-- 概要 -->
-            <div id="bigData" class="container-fuild" style="width:100%;">
-                <div class="row bigData-container"  style="width:1202px">
-                    <!-- 新闻动态 --> 
-                    <div class="col-xs-12 col-sm-12 col-md-4  zoomIn" style="margin-right:65px;overflow-y: scroll;height:400px;overflow-y: hidden;">
-                        <span :class="showContentFlag==0?'bodyTitle':''" @click="showContent(0)" style="cursor:default">新闻动态</span>
-                        <span :class="showContentFlag==1?'bodyTitle':''" style="margin-left:20px;cursor:default" @click="showContent(1)">公告</span>
-                        <div style="border-top:1px solid #E4E4E4;margin-top:7px;width:359px;">
-                            <!-- 遍历这个item组件 -->
-                            <div  style="border-bottom:1px dashed #E4E4E4;height:60px;line-height:60px;display:flex;"  class="newItem"
-                                  v-for="(info,infoindex) in InformationList" :key="infoindex" @click="showInfoDeail(info.id)">
-                                <span style="width:330px;word-break:break-all;flex:3;text-overflow: ellipsis;overflow:hidden;white-space:nowrap">{{info.title}}</span>
-                                <span style="margin-left:11px;color:#999999;flex:1;overflow:hidden">{{info.createtime}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 企业概况 -->
-                    <div class="col-xs-12 col-sm-12 col-md-4 survey" style="margin-right:64px;">
-                        <span class="bodyTitle">企业概况</span>
-                        <div style="border-top:1px solid #E4E4E4;padding-top:11px;margin-top:7px;width:431px;">
-                            <p style="text-indent:2em;line-height:36px;font-size:14px;"> 中药创建于2005年，前期投资3000万，占地面积28余亩，标准化生产车间及辅助用房建筑面积1000平方米。展望未来，公司承载重任，以“承中药之文化，扬国药之精髓，铸人类之健康”为使命，以“百亿中药”为目标，继续致力于现代中药、中药饮片与配方颗粒、中医药健康产业等板块的发展。 中药创建于2005年，前期投资3000万，占地面积28余亩，标准化生产车间及辅助用房建筑面积1000平方米。展望未来，公司承载重任，以“承中药之文化，扬国药之精髓。 </p>
-                        </div>    
-                    </div>
-                    <!-- 联系我们 --> 
-                    <div class="col-xs-12 col-sm-12 col-md-4" style="width:211px;">
-                        <span style=" color:#01A946;font-size: 16px;line-height: 22px;padding-bottom: 8px;">联系我们</span>
-                        <div style="width:212px;height:58px; position: relative;">
-                            <span style="position: absolute;left:64px;top:14px; color: #FFFFFF;line-height: 19px;">服务热线</span>
-                            <span style="position: absolute;left:64px;top:34px;color: #FFFFFF;line-height: 19px;">851-33770666</span>
-                            <img src="@/assets/img/contact.png" alt="联系我们" style="display:inline-bloack;width:100%;height:100%">
-                        </div>
-                        <div id="map" class="wow zoomIn" style="display:block;height:211px;width:212px"></div>
-                        <div style="margin-top:18px;word-break:break-all;width:205px;height:40px;color:#888888;font-size:14px;">公司地址: 贵州省安顺经济技术开发区双新路42号 </div>
-                        <div style="margin-top:12px;color:#888888;font-size:14px;">传真号码: 0851-33732666</div>
-                    </div>
-                </div>
-            </div>
-            <!-- 产品展示-->
-            <div id="bigData" style="padding-top:0px;width:100%;" class="container-fuild" >
-                <div class=" bigData-container" style="width:1202px;">
-                    <span class="bodyTitle">产品展示</span>
-                    <div style="border-top:1px solid #E4E4E4;margin-top:7px;" class="row product">
-                        <!-- 遍历这个item组件 -->
-                            <div v-for="(item,index) in GoodsList" :key="index" class="imgBox col-xs-12 col-sm-12 col-md-4" >
-                                <img :src=item.picUrl alt="产品展示" @click="showGoodsDetail(item.id)"/>
-                                <div style="text-align: center;">{{item.name}}</div>
-                            </div>
-                    </div>    
-                </div>
-            </div>
-            <!-- 技术实力 -->
-            <div id="bigData" style="padding-top:0px;width:100%;" class="container-fuild">
-                <div class="row bigData-container" style="width:1202px;">
-                    <span class="bodyTitle">技术实力</span>
-                    <div style="border-top:1px solid #E4E4E4;margin-top:7px;">              
-                      <el-row  class="tac" style="margin-top:19px;">
-                           <!-- 左侧导航组件 -->
-                          <leftNav :data-list="dataList" @currentNavMenu="currentNavMenu"/>
-                          <!-- 左侧内容区域 -->
-                          <el-col  style="margin-left:21px;margin-top:-15px;width:1032px">
-                              <div class="row" style="width:100%">
-                                   <div  v-for="(item,index) in TechnologyList" :key="index" class=" col-xs-12 col-sm-12 col-md-4" v-cloak>
-                                      <Card  class="card"  :technology-item="item" @PraiseSuccess="praiseSuccessHandler"/>
-                                  </div>
-                              </div>
-                          </el-col>
-                      </el-row>          
-                    </div>  
-                </div>
+        <div class="newsBox"></div>
+        <!-- 公司概况 -->
+        <div class="companySurvy">
+            <span class="title">公司概况</span>
+            <span class="engTitle">Company summary</span>
+            <span class="border"></span>
+            <div class="content">中药创建于2005年，前期投资3000万，占地面积28余亩，标准化生产车间及辅助用房建筑面积1000平方米。展望未来，公司承载重任，以“承中药之文化，扬国药之精髓，铸人类之健康”为使命，以“百亿中药”为目标，继续致力于现代中药、中药饮片与配方颗粒、中医药健康产业等板块的发展。 中药创建于2005年，前期投资3000万，占地面积28余亩，标准化生产车间及辅助用房建筑面积1000平方米。展望未来，公司承载重任，以“承中药之文化，扬国药之精髓。</div>
+            <div class="bigImgBox">
+                <img src="~@/assets/img/homePage_body1.png" alt="">
+                <img src="~@/assets/img/homePage_body2.png" alt="">
+                <img src="~@/assets/img/homePage_body3.png" alt="">
             </div>
         </div>
+        <div class="productShow">
+            <span class="title">产品展示</span>
+             <span class="engTitle">product display</span>
+             <span class="border"></span>
+             <div class="contentBox">
+                 <div class="productImg"><img :src="product.img" alt=""></div>
+                 <div class="bottomImg"></div>
+                 <div class="detail">
+                     <div class="subtitle">{{product.subtitle}}</div>
+                     <div v-html="product.detail"></div>
+                 </div>
+             </div>
+        </div>
+         <!-- 产品展示-->
+        <div id="bigData" class="container-fuild" style="margin-top:100px">
+            <div class="bigData-container" style="width:78%;">
+                <div class="row product">
+                    <!-- 遍历这个item组件 -->
+                        <div v-for="(item,index) in GoodsList" :key="index" class="imgBox col-xs-6 col-sm-6 col-md-4" >
+                            <img :src=item.picUrl alt="产品展示" @click="showGoodsDetail(item.id)"/>
+                            <div style="text-align: center;font-size:25px;color: #333333;">{{item.name}}</div>
+                        </div>
+                </div>    
+            </div>
+        </div>
+        <!-- 地图 -->
+        <div id="map" class="wow zoomIn" style="display:block;height:211px;width:100%;margin-top:100px;"></div>
+        <!-- 技术实力 -->
+        <div class="technology">
+            <span class="title">技术实力</span>
+             <span class="engTitle">technology strength</span>
+             <span class="border"></span>
+             <div class="row" style="width:100%">
+                <div  v-for="(item,index) in TechnologyList" :key="index" class="col-xs-12 col-sm-12 col-md-4" v-cloak>
+                    <Card  class="card"  :technology-item="item" @PraiseSuccess="praiseSuccessHandler"/>
+                </div>
+            </div>
+        </div> 
   </div>
 </template>
 <script>
@@ -121,6 +89,12 @@ export default {
         return {
             //banner轮播图
             bannerList:[],
+            //产品展示第一个图 和 一段简介
+            product:{
+                img:"",
+                subtitle:"",
+                detail:""
+            },
             //新闻动态
             InformationList:[],
             //公告列表
@@ -148,12 +122,18 @@ export default {
         })
         //获取公告列表
         this.getAnnouncementList();
-        //获取产品列表  展示16个
+        //获取产品列表  展示3个
         getGoodsList().then(res=>{
-            if(res.data.items.length <= 14){
-                this.GoodsList=res.data.items;
-            }else if(res.data.items.length>16){
-                this.GoodsList= res.data.items.slice(0,14)
+            //取第一个产品图片 和 简介 展示
+            var firstProduct=res.data.items[0];
+            this.product.img=firstProduct.picUrl;
+            this.product.subtitle=firstProduct.subtitle;
+            getGoodsDetail(res.data.items[0].id).then(res=>{
+                this.product.detail=res.data.detail;
+            });
+            //取三个产品展示
+            for(var i=0;i<3;i++){
+                this.GoodsList.push(res.data.items[i]);
             }
         })
         //获取技术实力列表 classid为第一个导航栏index
@@ -204,7 +184,7 @@ export default {
         // 地图
         var map = new BMap.Map("map"); // 创建地图实例
         var point = new BMap.Point(105.892929, 26.22883); // 创建点坐标
-        map.centerAndZoom(point, 18); // 初始化地图，设置中心点坐标和地图级别
+        map.centerAndZoom(point, 14); // 初始化地图，设置中心点坐标和地图级别
         map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
         var marker = new BMap.Marker(point); // 创建标注
         map.addOverlay(marker); // 将标注添加到地图中
@@ -220,28 +200,29 @@ export default {
             getGoodsDetail(goodsId).then(res=>{
                 //开启弹窗 传递数据
                 _this.$layer.iframe({
-                            content: {
-                                content: goodsDetails,
-                                parent: _this,
-                                data:{
-                                    detailsData:res.data
-                                }
-                            },
-                            area:['80%','550px'],
-                            title: '产品详情',
-                            shade: true,//是否显示遮罩
-                            shadeClose: false,//点击遮罩是否关闭
-                            cancel:()=>{
-                                
-                            }
-                            });
+                    content: {
+                        content: goodsDetails,
+                        parent: _this,
+                        data:{
+                            detailsData:res.data
+                        }
+                    },
+                    area:['80%','550px'],
+                    title: '产品详情',
+                    shade: true,//是否显示遮罩
+                    shadeClose: false,//点击遮罩是否关闭
+                    cancel:()=>{
+                     
+                      }
+                      });
             })
         },
-        //技术实力 列表(页面初始化调一次 classid为第一个导航条   点击时调一次classid为当前点击的classid)
+        //技术实力 列表 默认展示2个
         getTechnologyLists(classId){
             getTechnologyList(classId).then(res=>{
-                console.log(res.data.items)
-                this.TechnologyList=res.data.items
+                for(var i=0;i<2;i++){
+                    this.TechnologyList.push(res.data.items[i]);
+                }
             })
         },
         //技术实力类目列表
@@ -263,8 +244,8 @@ export default {
         showInfoDeail(informationId){
             if(this.showContentFlag==0){
                  this.router.push({
-                path:"/infoDetail",
-                name:"infoDetail",
+                    path:"/infoDetail",
+                    name:"infoDetail",
                 });
                 localStorage.setItem("informationId",informationId);
             }else if(this.showContentFlag==1){
@@ -323,6 +304,209 @@ export default {
 
 #HomePage {
     width: 100%;
+}
+
+ /*  公司概况  */
+#HomePage .companySurvy{
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ #HomePage .companySurvy .title{
+    margin-left: 45%;
+    font-size: 40px;
+    font-family: PingFang-SC-Medium, PingFang-SC;
+    font-weight: 500;
+    color: #DA0A16;
+    line-height: 56px;
+
+}
+#HomePage .companySurvy .engTitle{
+    display: block;
+    margin-left: 41.5%;        
+    font-size: 32px;
+    font-family: PingFang-SC-Regular, PingFang-SC;
+    font-weight: 400;
+    color: #999999;
+    line-height: 45px;
+
+}
+#HomePage .companySurvy .border{
+    display: block;
+    margin-top: 32px;
+    margin-left: 47%;
+    width: 106px;
+    height: 1px;
+    background-color: #ccc;
+
+}
+#HomePage .companySurvy .content{
+    margin: 52px 10% 2% 10%;
+    font-size: 32px;
+    font-family: PingFang-SC-Regular, PingFang-SC;
+    font-weight: 400;
+    color: #666666;
+    line-height: 48px;
+}
+
+#HomePage .companySurvy .bigImgBox{
+    width: 100%;
+    height: 30%;
+    display: flex;
+}
+#HomePage .companySurvy .bigImgBox img{
+    width: 33.33333%;
+}
+
+/* 产品展示 */
+#HomePage .productShow{
+    margin-top: 100px;
+
+}
+
+#HomePage .productShow .title{
+    margin-left: 45%;
+    font-size: 40px;
+    font-family: PingFang-SC-Medium, PingFang-SC;
+    font-weight: 500;
+    color: #DA0A16;
+    line-height: 56px;
+
+}
+ #HomePage .productShow  .engTitle{
+    display: block;
+    margin-left: 43.5%;        
+    font-size: 32px;
+    font-family: PingFang-SC-Regular, PingFang-SC;
+    font-weight: 400;
+    color: #999999;
+    line-height: 45px;
+
+}
+#HomePage .productShow .border{
+    display: block;
+    margin-top: 32px;
+    margin-left: 47%;
+    width: 106px;
+    height: 1px;
+    background-color: #ccc;
+}
+#HomePage .productShow .contentBox{
+    position: relative;
+    margin-top: 208px;
+    width: 100%;
+}
+#HomePage .productShow .contentBox .productImg{
+    position: absolute;
+    width: 25%;
+    height: 406px;
+    left: 22%;
+    top: -20%;
+   
+}
+#HomePage .productShow .contentBox .productImg img{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+#HomePage .productShow .contentBox .bottomImg{
+    background: #C0A379;
+    width:43%;
+    height: 408px;
+    margin-left: 28%;
+    border-radius: 10px;
+}
+#HomePage .productShow .contentBox  .detail{
+    position: absolute;
+    background-color: #fff;
+    padding: 44px 0px 152px 69px;
+    width: 43%;
+    height: 408px;
+    left: 51%;
+    top: 13%;
+    border-radius: 10px;
+}
+#HomePage .productShow .contentBox  .detail .subtitle{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+/* 技术实力 */
+#HomePage  .technology{
+    margin-top: 100px;
+
+}
+#HomePage  .technology .title{
+    margin-left: 45%;
+    font-size: 40px;
+    font-family: PingFang-SC-Medium, PingFang-SC;
+    font-weight: 500;
+    color: #DA0A16;
+    line-height: 56px;
+
+}
+#HomePage  .technology .engTitle{
+    display: block;
+    margin-left: 41.5%;        
+    font-size: 32px;
+    font-family: PingFang-SC-Regular, PingFang-SC;
+    font-weight: 400;
+    color: #999999;
+    line-height: 45px;
+
+}
+#HomePage  .technology .border{
+    display: block;
+    margin-top: 32px;
+    margin-left: 47%;
+    width: 106px;
+    height: 1px;
+    background-color: #ccc;
+}
+
+
+
+
+
+/* 产品展示 */
+#HomePage .product{
+
+}
+#HomePage .product .imgBox {
+    width: 454px;
+    height: 542px;
+    margin-top: 9px;
+    padding-left: 42px;
+    padding-top: 38px;
+    margin-right: 28px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+#HomePage .product .imgBox:hover{
+    box-shadow: 0 0 10px #000000;
+    opacity: 0.8;
+}
+
+#HomePage .product .imgBox img {
+    display: inline-block;
+    width: 100%;
+    height: 89%;
+    border-radius: 10px;
+}
+/* 技术实例 */
+.card{
+    width:424px;
+    height:411px;
+    border-radius: 5px;
+    margin-right: 30px;
+    margin-bottom: 31px;
+}
+.card:hover{
+    box-shadow: 0 0 10px #000000;
+    opacity: 0.8;
 }
 
 /* 轮播图 */
@@ -480,38 +664,6 @@ export default {
     background-color: #f4f4f4;
 }
 
-/* 产品展示 */
-
-.imgBox {
-    width: 140px;
-    height: 140px;
-    margin-top: 9px;
-    padding-left: 0;
-    margin-right: 28px;
-    margin-top: 20px;
-}
-.imgBox:hover{
-    border: 1px solid #F71A1A;
-}
-
-.imgBox img {
-    display: inline-block;
-    width: 100%;
-    height: 89%;
-    border-radius: 4px;
-}
-/* 技术实例 */
-.card{
-    width:324px;
-    height:311px;
-    border-radius: 5px;
-    margin-right: 30px;
-    margin-bottom: 31px;
-}
-.card:hover{
-    box-shadow: 0 0 10px #000000;
-    opacity: 0.8;
-}
 
 
 
@@ -613,9 +765,6 @@ export default {
         width: 10px;
     }
 
-    .product{
-        width: 768px;
-    }
 }
 
 /* 媒体查询（平板） */

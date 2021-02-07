@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Message, Loading } from 'element-ui'
-const ConfigBaseURL = 'http://8.134.52.142:8112' //默认路径，这里也可以使用env来判断环境
+const ConfigBaseURL = 'http://zyyp.mafengkj.ltd:8112' //默认路径，这里也可以使用env来判断环境
 let loadingInstance = null //这里是loading
 //使用create方法创建axios实例
 export const Service = axios.create({

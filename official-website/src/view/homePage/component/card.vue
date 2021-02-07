@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="root">
         <div class="imgBox">
             <img :src="TechnologyItem.picUrl" alt="" @click="showAppointment">
             <div v-if="TechnologyItem.conventionType==1" class="convention" @click="conventionHandle(TechnologyItem.id)">预约到店</div>
@@ -57,24 +57,18 @@ export default {
         //预约处理
         conventionHandle(id){
             this.$layer.iframe({
-                            content: {
-                                content: appointment,
-                                parent: this,
-                                data:{
-                                }
-                            },
-                            area:['90%','701px'],
-                            title: '预约',
-                            cancel:()=>{
-                                
-                            }
-                            });
-
-
-
-
-
-
+                 content: {
+                     content: appointment,
+                     parent: this,
+                     data:{
+                     }
+                 },
+                 area:['90%','701px'],
+                 title: '预约',
+                 cancel:()=>{
+                     
+                 }
+                 });
         }
     },
     props:{
@@ -88,9 +82,12 @@ export default {
 }
 </script>
 <style scoped>
+.root{
+    padding: 30px;
+}
 .imgBox{
-    width: 324px;
-    height: 183px;
+    width: 100%;
+    height: 283px;
     padding-right: 0px;
     position: relative;
    
