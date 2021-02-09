@@ -60,9 +60,9 @@
             <span class="title">技术实力</span>
              <span class="engTitle">technology strength</span>
              <span class="border"></span>
-             <div class="row" style="width:100%">
-                <div  v-for="(item,index) in TechnologyList" :key="index" class="col-xs-12 col-sm-12 col-md-4" v-cloak>
-                    <Card  class="card"  :technology-item="item" @PraiseSuccess="praiseSuccessHandler"/>
+             <div class="row" style="width:100%;margin-top:66px;">
+                <div  v-for="(item,index) in TechnologyList" :key="index" class="col-xs-12 col-sm-12 col-md-6" v-cloak>
+                    <home-page-card class="card"  :technology-item="item" @PraiseSuccess="praiseSuccessHandler"/>
                 </div>
             </div>
         </div> 
@@ -72,18 +72,20 @@
 import Swiper from "swiper";
 import { WOW } from "wowjs";
 import BMap from "BMap";
-import Card from "./homePage/component/card"
+import homePageCard from "./homePage/component/homePageCard"
 import leftNav from './homePage/common/leftNav.vue';
 import goodsDetails from "./homePage/goodsDetails.vue"
 import announcementDetail from './homePage/announcementDetail.vue'
 import {getActiveAdd,getInformationList,getGoodsList,getGoodsDetail,getTechnologyList,getTechnologyClassList,getAnnouncementList} from "@/api/api.js"
+import HomePageCard from './homePage/component/homePageCard.vue';
 
 export default {
     name: "HomePage",
     components:{
-        Card,
+        homePageCard,
         leftNav,
-        goodsDetails
+        goodsDetails,
+        HomePageCard
     },
     data() {
         return {
@@ -437,6 +439,7 @@ export default {
 /* 技术实力 */
 #HomePage  .technology{
     margin-top: 100px;
+    margin-bottom: 128px;
 
 }
 #HomePage  .technology .title{
@@ -467,14 +470,6 @@ export default {
     background-color: #ccc;
 }
 
-
-
-
-
-/* 产品展示 */
-#HomePage .product{
-
-}
 #HomePage .product .imgBox {
     width: 454px;
     height: 542px;
@@ -498,11 +493,11 @@ export default {
 }
 /* 技术实例 */
 .card{
-    width:424px;
-    height:411px;
+    width:748px;
+    height:674px;
     border-radius: 5px;
-    margin-right: 30px;
-    margin-bottom: 31px;
+    margin: 0 auto;
+    padding: 30px;
 }
 .card:hover{
     box-shadow: 0 0 10px #000000;
@@ -763,6 +758,16 @@ export default {
     }
     .CardtextBox .title{
         width: 10px;
+    }
+
+
+    #HomePage .productShow .contentBox .productImg{
+       position: absolute;
+        width: 43%;
+        height: 406px;
+        left: 5%;
+        top: -20%;
+    
     }
 
 }

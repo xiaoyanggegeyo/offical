@@ -192,8 +192,8 @@ export default {
 /* 标题文字 */
 
 .bodyTitle {
-    color: #01A946;
-    border-bottom: 2px solid #01A946;
+    color: #DA0A15;
+    border-bottom: 2px solid #DA0A15;
     padding-bottom: 1px;
     font-size: 16px;
     line-height: 22px;

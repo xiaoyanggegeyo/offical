@@ -354,7 +354,7 @@ export default {
 
 /* 企业商城二级下拉 鼠标选中颜色 */
 .childMenu:hover{
-  background-color: #01A946 !important;
+  background-color: #DA0A15 !important;
   
 }
 .childMenu span:hover{

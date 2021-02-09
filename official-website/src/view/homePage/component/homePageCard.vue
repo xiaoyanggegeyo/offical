@@ -1,15 +1,15 @@
 <template>
     <div class="root">
         <div class="imgBox">
-            <img :src="TechnologyItem.picUrl" alt="" @click="showAppointment">
+            <img :src="TechnologyItem.picUrl" alt="">
             <div v-if="TechnologyItem.conventionType==1" class="convention" @click="conventionHandle(TechnologyItem.id)">预约到店</div>
         </div>
         <div class="textBox">
             <div class="title">{{TechnologyItem.name}}</div>
             <div class="title2">{{TechnologyItem.subtitle}}</div>
             <div class="title3">
-                <div style=" display: inline-block;width:90px;height:20px;overflow:hidden;color:#999999;">{{TechnologyItem.createtime}}</div>
-                <span class="num">{{TechnologyItem.praiseNum}} <i class="icon iconfont" :class="TechnologyItem.praiseStatus==1?'active':''" @click="PraiseHandler(TechnologyItem.id)"></i></span>
+                <span class="tab"><span class="numInner">基地测量</span></span>
+                <span class="num" @click="showAppointment">→</span>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@ import dateFormat from "../../utils/dateTimeUtls/dateFormat.js"
 import appointment from "../../service/component/appointment.vue"
 import {updateTechnologyPraise}  from "@/api/api.js"
 export default {
-    name: 'Software',
+    name: 'home-page-card',
     components:{
         appointment
     },
@@ -86,10 +86,8 @@ export default {
 }
 .imgBox{
     width: 100%;
-    height: 183px;
-    padding-right: 0px;
     position: relative;
-   
+    margin: 0 auto;
 }
 /* 预约 */
 .convention{
@@ -109,31 +107,55 @@ export default {
 }
 .imgBox img{
     display: block;
-    width: 100%;
-    height: 183px;
+    width: 690px;
+    height: 430px;
     border-radius: 8px 8px 0px 0px;
+    margin: 0 auto;
 }
 .textBox{
     width: 100%;
     height: 129px;
-    background: #F1F1F1;
     border-radius:  0px 0px 8px 8px;
+    margin-top: 32px;
 }
 .textBox .title{
-    padding: 10px 23px 13px 10px;
-    color: #444444;
+    padding: 10px 23px 13px 0px;
+    font-size: 25px;
+    font-family: PingFang-SC-Medium, PingFang-SC;
+    font-weight: 500;
+    color: #333333;
+    line-height: 36px;
 }
-.title2{
-    padding-left: 10px;
-    padding-top: 13px;
-    color:#999999;
+
+.numInner{
+    margin-top: 5px;
+    padding: 2px;
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
+    height: 10px;
+}
+
+.title2{  
+    font-size: 16px;
+    font-family: PingFang-SC-Regular, PingFang-SC;
+    font-weight: 400;
+    color: #666666;
+    line-height: 22px;
 }
 .title3{
-    padding-left: 10px;
-    padding-top: 13px;
+    /* padding-left: 10px;
+    padding-top: 13px; */
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     color:#999999;
+}
+.tab{
+     display: inline-block;
+     width:90px;
+     height:50px;
+     padding-top: 10px;
+     overflow: hidden;
+     color:#999999;
 }
 .title3 span{
     flex: 1;
@@ -143,11 +165,10 @@ export default {
 }
 .num{
     padding-right: 10px;
-    cursor: default;
+    cursor: pointer;
+    font-size: 30px;
 }
-.active{
-    color: #DA0A15;
-}
+
 
 </style>
 
