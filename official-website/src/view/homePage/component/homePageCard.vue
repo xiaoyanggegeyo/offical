@@ -1,7 +1,7 @@
 <template>
     <div class="root">
         <div class="imgBox">
-            <img :src="TechnologyItem.picUrl" alt="">
+            <img :src="TechnologyItem.picUrl" alt="" >
             <div v-if="TechnologyItem.conventionType==1" class="convention" @click="conventionHandle(TechnologyItem.id)">预约到店</div>
         </div>
         <div class="textBox">
@@ -107,7 +107,7 @@ export default {
 }
 .imgBox img{
     display: block;
-    width: 690px;
+    width: 100%;
     height: 430px;
     border-radius: 8px 8px 0px 0px;
     margin: 0 auto;

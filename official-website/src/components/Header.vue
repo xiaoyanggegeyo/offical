@@ -111,12 +111,6 @@ export default {
             document.querySelector('.header-nav-m-menu').style.zIndex="";
         }
     })
-
-
-
-
-
-
   },
   data() {
     return {
@@ -227,8 +221,7 @@ export default {
   padding-right:11.5% ;
   width: 100%;
   height: 110px;
-  background-image: url("~@/assets/img/homePage_top.png")
-  /* background-color: white; */
+  background-image: url("~@/assets/img/homePage_top.png");
 }
 /* 导航栏logo */
 #header .header-nav .header-nav-logo {
@@ -260,6 +253,7 @@ export default {
   float: right;
   margin: 0;
   max-width: 750px;
+  position: absolute;
 }
 /* 吸顶效果 */
 .set-top-position{

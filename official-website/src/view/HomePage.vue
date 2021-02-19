@@ -345,7 +345,7 @@ export default {
 }
 #HomePage .companySurvy .content{
     margin: 52px 10% 2% 10%;
-    font-size: 32px;
+    font-size: 25px;
     font-family: PingFang-SC-Regular, PingFang-SC;
     font-weight: 400;
     color: #666666;
@@ -481,7 +481,7 @@ export default {
     border-radius: 10px;
 }
 #HomePage .product .imgBox:hover{
-    box-shadow: 0 0 10px #000000;
+    box-shadow: 0 0 10px #ccc;
     opacity: 0.8;
 }
 
@@ -493,14 +493,14 @@ export default {
 }
 /* 技术实例 */
 .card{
-    width:748px;
+    width:70%;
     height:674px;
     border-radius: 5px;
     margin: 0 auto;
     padding: 30px;
 }
 .card:hover{
-    box-shadow: 0 0 10px #000000;
+    box-shadow: 0 0 10px #ccc;
     opacity: 0.8;
 }
 
