@@ -5,9 +5,9 @@
     <div class="header-nav container hidden-xs">
       <!-- 导航logo -->
       <div class="header-nav-logo">
-        <img src="@/assets/img/logo.jpg">
+        <img src="@/assets/img/titleLogo.png">
       </div>
-      <div class="bigTitle">安顺宝林科技中药饮片有限公司</div>
+      <div class="bigTitle">安顺宝林科技中药饮片</div>
       <!-- 导航内容 -->
       <ul class="header-nav-wrapper">
         <li
@@ -95,6 +95,8 @@ export default {
             document.querySelector('.header-nav').style.position="fixed";
             document.querySelector('.header-nav').style.top="0";
             document.querySelector('.header-nav').style.zIndex="2";
+            document.querySelector('.header-nav').style.backgroundImage="url()";
+            
             //移动端吸顶
             document.querySelector('.header-nav-m-menu').style.position="fixed";
             document.querySelector('.header-nav-m-menu').style.width="100%";
@@ -104,6 +106,8 @@ export default {
             //pc端 吸顶恢复
             document.querySelector('.header-nav').style.position="";
             document.querySelector('.header-nav').style.top="";
+            document.querySelector('.header-nav').style.background="";
+
             //移动端 吸顶恢复
             document.querySelector('.header-nav-m-menu').style.position="";
             document.querySelector('.header-nav-m-menu').style.width="100%";
@@ -194,7 +198,6 @@ export default {
 }
 #header .header-top {
   height: 50px;
-  color: #fff;
   font-size: 12px;
   line-height: 50px;
   background: #474747;
@@ -221,6 +224,7 @@ export default {
   padding-right:11.5% ;
   width: 100%;
   height: 110px;
+  background: rgba(51, 34, 34, 0.4);
   background-image: url("~@/assets/img/homePage_top.png");
 }
 /* 导航栏logo */

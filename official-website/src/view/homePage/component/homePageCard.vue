@@ -15,7 +15,6 @@
     </div>
 </template>
 <script>
-import { WOW } from "wowjs";
 import dateFormat from "../../utils/dateTimeUtls/dateFormat.js"
 import appointment from "../../service/component/appointment.vue"
 import {updateTechnologyPraise}  from "@/api/api.js"
@@ -81,9 +80,16 @@ export default {
 }
 </script>
 <style scoped>
-.root{
-    /* padding: 30px; */
+.root:hover .imgBox img{
+    transition: all 0.8s;
+    transform: scale(1.08);
+  
 }
+.root:hover .imgBox .convention{
+    transition: all 0.8s;
+    transform: scale(1.1);
+}
+
 .imgBox{
     width: 100%;
     position: relative;
@@ -105,6 +111,7 @@ export default {
     width: 100%;
     height: 46px;
 }
+
 .imgBox img{
     display: block;
     width: 100%;
@@ -112,6 +119,8 @@ export default {
     border-radius: 8px 8px 0px 0px;
     margin: 0 auto;
 }
+
+
 .textBox{
     width: 100%;
     height: 129px;

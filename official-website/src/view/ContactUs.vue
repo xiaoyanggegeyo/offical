@@ -1,6 +1,6 @@
 <template>
   <div id="ContactUs">
-    <div style="width:100%;height:540px;margin-bottom:30px" class="container-fuild">
+    <div style="width:100%;height:400px;margin-bottom:30px" class="container-fuild">
       <a :href="bannerList.link">
         <img style="display:block;height:100%;width:100%" :src="bannerList.bannerUrl" alt="">
       </a>     

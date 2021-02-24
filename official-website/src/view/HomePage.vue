@@ -12,6 +12,9 @@
                 </div>
                 <!-- 如果需要分页器 -->
                 <div class="swiper-pagination"></div>
+                 <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev arrow" ></div>
+                <div class="swiper-button-next arrow"></div>
             </div>
         </div>
         <!-- 新闻与公告 -->
@@ -44,11 +47,11 @@
          <!-- 产品展示-->
         <div id="bigData" class="container-fuild" style="margin-top:100px">
             <div class="bigData-container" style="width:78%;">
-                <div class="row product">
+                <div class="row product" style="margin:0 auto;padding-left:7%">
                     <!-- 遍历这个item组件 -->
-                        <div v-for="(item,index) in GoodsList" :key="index" class="imgBox col-xs-6 col-sm-6 col-md-4" >
+                        <div v-for="(item,index) in GoodsList" :key="index" class="imgBox col-xs-6 col-sm-6 col-md-4">
                             <img :src=item.picUrl alt="产品展示" @click="showGoodsDetail(item.id)"/>
-                            <div style="text-align: center;font-size:25px;color: #333333;">{{item.name}}</div>
+                            <div style="text-align: center;font-size:25px;color: #333333;margin-top:8px">{{item.name}}</div>
                         </div>
                 </div>    
             </div>
@@ -308,6 +311,23 @@ export default {
     width: 100%;
 }
 
+/* 轮播图 箭头 */
+.arrow{
+    background-color: rgba(59, 34, 34,0.5);
+    height: 80px;
+    width: 80px;
+    border-radius: 16px;
+}
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next{
+    background-image: url("~@/assets/img/leftArrow.png");
+    background-size: 40px 40px ;
+}
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev{
+    background-image: url("~@/assets/img/rightArrow.png");
+    background-size: 40px 40px ;
+}
+
+
  /*  公司概况  */
 #HomePage .companySurvy{
     margin-top: 100px;
@@ -401,9 +421,9 @@ export default {
 }
 #HomePage .productShow .contentBox .productImg{
     position: absolute;
-    width: 25%;
-    height: 406px;
-    left: 22%;
+    width: 36%;
+    height: 426px;
+    left: 10%;
     top: -20%;
    
 }
@@ -414,6 +434,9 @@ export default {
     height: 100%;
     border-radius: 10px;
 }
+
+
+
 
 #HomePage .productShow .contentBox .bottomImg{
     background: #C0A379;
@@ -471,33 +494,39 @@ export default {
 }
 
 #HomePage .product .imgBox {
-    width: 454px;
-    height: 542px;
+    width: 30%;
+    height: 400px;
     margin-top: 9px;
-    padding-left: 42px;
     padding-top: 38px;
     margin-right: 28px;
     margin-top: 20px;
     border-radius: 10px;
+    overflow: hidden;
 }
 #HomePage .product .imgBox:hover{
     box-shadow: 0 0 10px #ccc;
     opacity: 0.8;
 }
 
+#HomePage .product .imgBox img:hover{
+    transition: all 0.5s;
+    transform: scale(1.04); 
+}
+
 #HomePage .product .imgBox img {
     display: inline-block;
     width: 100%;
-    height: 89%;
+    height: 80%;
     border-radius: 10px;
 }
 /* 技术实例 */
 .card{
-    width:70%;
+    width:75%;
     height:674px;
     border-radius: 5px;
     margin: 0 auto;
     padding: 30px;
+    
 }
 .card:hover{
     box-shadow: 0 0 10px #ccc;

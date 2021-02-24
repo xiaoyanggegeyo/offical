@@ -1,7 +1,7 @@
 <template>
     <div class="root">
         <div class="imgBox">
-            <img :src="TechnologyItem.picUrl" alt="" @click="showAppointment">
+            <img :src="TechnologyItem.picUrl" alt="">
             <div v-if="TechnologyItem.conventionType==1" class="convention" @click="conventionHandle(TechnologyItem.id)">预约到店</div>
         </div>
         <div class="textBox">
@@ -9,7 +9,7 @@
             <div class="title2">{{TechnologyItem.subtitle}}</div>
             <div class="title3">
                 <div style=" display: inline-block;width:90px;height:20px;overflow:hidden;color:#999999;">{{TechnologyItem.createtime}}</div>
-                <span class="num">{{TechnologyItem.praiseNum}} <i class="icon iconfont" :class="TechnologyItem.praiseStatus==1?'active':''" @click="PraiseHandler(TechnologyItem.id)"></i></span>
+                <span class="num" @click="showAppointment">→</span>            
             </div>
         </div>
     </div>
@@ -82,14 +82,24 @@ export default {
 </script>
 <style scoped>
 .root{
-    /* padding: 30px; */
+    overflow: hidden;
 }
+.root:hover .imgBox img{
+    transition: all 0.8s;
+    transform: scale(1.1);
+  
+}
+.root:hover .imgBox .convention{
+    transition: all 0.8s;
+    transform: scale(1.1);
+}
+
+
 .imgBox{
     width: 100%;
     height: 183px;
     padding-right: 0px;
     position: relative;
-   
 }
 /* 预约 */
 .convention{
@@ -143,7 +153,8 @@ export default {
 }
 .num{
     padding-right: 10px;
-    cursor: default;
+    cursor: pointer;
+    font-size: 20px;
 }
 .active{
     color: #DA0A15;

@@ -1,7 +1,7 @@
 <template>
     <div id="HomePage">
         <!-- 轮播图 -->
-        <div style="width:100%;height:540px;margin-bottom:30px" class="container-fuild">
+        <div style="width:100%;height:400px;margin-bottom:30px" class="container-fuild">
             <a :href="bannerList.link">
                 <img style="display:block;height:100%;width:100%" :src="bannerList.bannerUrl" alt="">
             </a>
@@ -15,7 +15,7 @@
                           <leftNav :data-list="dataList" @currentNavMenu="currentNavMenu"/>
                           <el-col  style="margin-left:21px;margin-top:-82px;width:1032px">
                               <div class="row cardBox" style="width:100%">
-                                   <div  v-for="(item,index) in TechnologyList" :key="index" class=" col-xs-12 col-sm-12 col-md-4">
+                                   <div  v-for="(item,index) in TechnologyList" :key="index" class="col-xs-12 col-sm-12 col-md-4">
                                             <div class="CardimgBox" @click="showGoodsDetail(item.id)">
                                                 <img   :src="item.picUrl" alt="">
                                                 <div class="title">{{item.name}}</div>
@@ -153,7 +153,7 @@ export default {
 /* 轮播图 */
 
 #swiper {
-    height: 600px;
+    height: 450px;
 }
 
 
@@ -250,6 +250,7 @@ export default {
     height: 100%;
     border-radius: 4px;
 }
+/* 卡片区域 */
 .cardBox{
     margin: 83px 49px 66px 32px; 
 }
@@ -259,24 +260,42 @@ export default {
     margin: 0px 49px 66px 32px;
 }
 
-
 .CardimgBox{
     width: 300px;
     height: 300px;
     padding-right: 0px;
+    overflow: hidden;
    
 }
- .title{
+
+.CardimgBox .title{
         text-align: center;
-    }
+        margin-top: 14px;
+        font-size: 17px;
+        font-weight: bold;
+}
+
+.CardimgBox:hover img{
+    transition: all 0.5s;
+    transform: scale(1.04); 
+}
+
 
 .CardimgBox:hover{
-    border: 1px solid #F71A1A;
+    box-shadow: 0 0 10px #ccc;
+    opacity: 0.8;
+    border-radius: 10px;
+    border:1px solid red
+    
 }
+
+
+
+
 .CardimgBox img{
     display: block;
     width: 100%;
-    height: 94.5%;
+    height: 85%;
 }
 .CardtextBox{
     width: 300px;
