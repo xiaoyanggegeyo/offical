@@ -1,15 +1,15 @@
 <template>
-    <div class="root">
+    <div class="root"  @click="showAppointment">
         <div class="imgBox">
             <img :src="TechnologyItem.picUrl" alt="">
-            <div v-if="TechnologyItem.conventionType==1" class="convention" @click="conventionHandle(TechnologyItem.id)">预约到店</div>
+            <div v-if="TechnologyItem.conventionType==1" class="convention" @click.stop="conventionHandle(TechnologyItem.id)">预约到店</div>
         </div>
         <div class="textBox">
             <div class="title">{{TechnologyItem.name}}</div>
             <div class="title2">{{TechnologyItem.subtitle}}</div>
             <div class="title3">
                 <div style=" display: inline-block;width:90px;height:20px;overflow:hidden;color:#999999;">{{TechnologyItem.createtime}}</div>
-                <span class="num" @click="showAppointment">→</span>            
+                <span class="num">→</span>            
             </div>
         </div>
     </div>
@@ -137,6 +137,14 @@ export default {
     padding-left: 10px;
     padding-top: 13px;
     color:#999999;
+    padding-left: 10px;
+    padding-top: 13px;
+    color: #999999;
+    height: 49px;
+    margin-bottom: -10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .title3{
     padding-left: 10px;

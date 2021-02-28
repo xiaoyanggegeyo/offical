@@ -34,6 +34,17 @@ export default {
 </script>
 
 <style scoped>
+
+.el-card{
+    border-bottom: 1px solid #ccc;
+    padding: 0 10px;
+    background-color: #FFF;
+    color: #303133;
+    -webkit-transition: .3s;
+    transition: .3s;
+
+}
+    
 /* 电脑 */
 @media screen and(min-width: 996px) {
    #footer{

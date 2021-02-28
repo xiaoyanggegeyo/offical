@@ -1,15 +1,15 @@
 <template>
-    <div class="root">
-        <div class="imgBox">
+    <div class="root" @click="showAppointment">
+        <div class="imgBox" >
             <img :src="TechnologyItem.picUrl" alt="" >
-            <div v-if="TechnologyItem.conventionType==1" class="convention" @click="conventionHandle(TechnologyItem.id)">预约到店</div>
+            <div v-if="TechnologyItem.conventionType==1" class="convention" @click.stop="conventionHandle(TechnologyItem.id)">预约到店</div>
         </div>
         <div class="textBox">
             <div class="title">{{TechnologyItem.name}}</div>
             <div class="title2">{{TechnologyItem.subtitle}}</div>
             <div class="title3">
                 <span class="tab"><span class="numInner">基地测量</span></span>
-                <span class="num" @click="showAppointment">→</span>
+                <span class="num" >→</span>
             </div>
         </div>
     </div>

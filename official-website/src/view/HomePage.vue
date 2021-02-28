@@ -1,24 +1,39 @@
 <template>
     <div id="HomePage" v-cloak>
-        <!-- 轮播图 -->
         <div id="swiper" class="container-fuild" >
             <div class="swiper-container banner-swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide" v-for="(item,index) in bannerList" :key="index">
-                        <a :href="item.link">
+                        <a :href="item.link == ''?'':item.link">
                             <img class="swiper-lazy" :src="item.bannerUrl" alt="轮播图">
                         </a>
                     </div>
                 </div>
-                <!-- 如果需要分页器 -->
+           
                 <div class="swiper-pagination"></div>
-                 <!-- 如果需要导航按钮 -->
+          
                 <div class="swiper-button-prev arrow" ></div>
                 <div class="swiper-button-next arrow"></div>
             </div>
         </div>
-        <!-- 新闻与公告 -->
-        <div class="newsBox"></div>
+        <!--公告 -->
+         <div class="newsBox">
+            <el-row :gutter="24">
+                <el-col :span="24" >
+                    <div class="newCard" @click="showNoticeDetail(AnnouncementList)">
+                        <div class="innerBox">
+                            <div class="topBox">
+                            <span class="title">{{AnnouncementList.title}}</span>
+                            <span class="time">{{AnnouncementList.createtime}}</span>
+                        </div>
+                        <div class="subtitle">{{AnnouncementList.abstract==null || !AnnouncementList.abstract ?"无内容":AnnouncementList.abstract }}</div>
+                        <span class="tab">公告</span>
+                        <div class="line"></div>
+                        </div>
+                    </div> 
+                </el-col>
+            </el-row>
+        </div>
         <!-- 公司概况 -->
         <div class="companySurvy">
             <span class="title">公司概况</span>
@@ -69,6 +84,24 @@
                 </div>
             </div>
         </div> 
+        <div class="newsBox">
+            <el-row :gutter="24">
+                <el-col :span="24" >
+                    <div class="newCard"  :body-style="{ padding: '30px' }" v-for="(item,index) in InformationList"  :key="index" @click="showInfoDeail(item.id)">
+                        <div class="innerBox">
+                            <div class="topBox">
+                            <span class="title">{{item.title}}</span>
+                            <span class="time">{{item.createtime}}</span>
+                        </div>
+                        <div class="subtitle">{{item.abstract=="" ||item.abstract==null ?"无内容":item.abstract }}</div>
+                        <span class="tab">新闻</span>
+                        <div class="line"></div>
+                        </div>
+                    </div>
+                    
+                </el-col>
+            </el-row>
+        </div>
   </div>
 </template>
 <script>
@@ -103,7 +136,7 @@ export default {
             //新闻动态
             InformationList:[],
             //公告列表
-            AnnouncementList:[],
+            AnnouncementList:{},
             //显示新闻 0 or 公告 1
             showContentFlag:0,
             //产品展示
@@ -119,11 +152,14 @@ export default {
     created(){
         // 获取轮播图
         getActiveAdd(1).then(res=>{
+            // debugger;
             this.bannerList=res.data
         })
         //获取新闻列表
         getInformationList().then(res=>{
-            this.InformationList=res.data.items
+            for(var i=0;i<4;i++){
+              this.InformationList.push(res.data.items[i]);
+            }
         })
         //获取公告列表
         this.getAnnouncementList();
@@ -245,62 +281,42 @@ export default {
         praiseSuccessHandler(status){
             this.getTechnologyLists(this.currentNavIndex);
         },
-        //查看新闻详情
+        //查看公告详情
+        showNoticeDetail(item){
+            this.$layer.iframe({
+                 content: {
+                     content: announcementDetail,
+                     parent: this,
+                     data:{
+                         detailData:item.detail
+                     }
+                 },
+                 area:['80%','550px'],
+                 title: '公告详情',
+                 shade: true,//是否显示遮罩
+                 shadeClose: false,//点击遮罩是否关闭
+                 cancel:()=>{
+                     
+                 }
+            });
+
+        },
+        //查看新闻详情----新闻id
         showInfoDeail(informationId){
-            if(this.showContentFlag==0){
-                 this.router.push({
-                    path:"/infoDetail",
-                    name:"infoDetail",
-                });
-                localStorage.setItem("informationId",informationId);
-            }else if(this.showContentFlag==1){
-                console.log(informationId)
-                //根据id 取集合中对象的detail 开启弹窗 传过去
-                let announcement={};
-                this.InformationList.forEach(item => {
-                    if(item.id==informationId){
-                        announcement=item
-                    }
-                });
-                this.$layer.iframe({
-                            content: {
-                                content: announcementDetail,
-                                parent: this,
-                                data:{
-                                    detailData:announcement.detail
-                                }
-                            },
-                            area:['80%','550px'],
-                            title: '公告详情',
-                            shade: true,//是否显示遮罩
-                            shadeClose: false,//点击遮罩是否关闭
-                            cancel:()=>{
-                                
-                            }
-                            });
-            }
-           
+           this.router.push({
+              path:"/infoDetail",
+              name:"infoDetail",
+          });
+          localStorage.setItem("informationId",informationId);
         },
         //公告列表
         getAnnouncementList(){
             getAnnouncementList().then(res=>{
-                this.AnnouncementList=res.data
+                debugger;
+                this.AnnouncementList=res.data[0]
             });
         },
-        //显示新闻详情 or 公告
-        showContent(index){
-            this.showContentFlag=index
-            //点击index==1请求公告数据
-            if(index==1){
-                getAnnouncementList().then(res=>{
-                    this.InformationList=res.data;
-                })
-            }else if(index==0){
-                 getInformationList().then(res=>{
-                    this.InformationList=res.data.items
-                })
-            }
-        }
+       
     }
 };
 </script>
@@ -591,12 +607,76 @@ export default {
    height: 0.3rem;
    border-radius: 50%;
 }
-/* 新闻公告 */
+/* 新闻 */
 .newsBox{
     width: 100%;
-    background-color: #F5F5F5;
-    padding: 25px 391px 23px 196px;
+    padding-left: 6%;
+    padding-right: 6%;
+    margin: 0 auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
+.newsBox .newCard{
+    height:175px;
+    border-radius: 5px;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 4%;   
+}
+.newsBox .newCard .innerBox{
+    border-bottom: 1px solid #ccc;
+    height: 100%;
+}
+.newsBox .newCard:hover{
+    box-shadow: 0 0 20px #ccc;
+    opacity: 0.8;
+}
+.newsBox .topBox{
+    width: 100%;
+
+}
+.newsBox .topBox .title{
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    line-height: 24px;
+}
+.newsBox .topBox .time{
+    float: right;
+    font-size: 14px;
+    color: #999;
+    line-height: 24px;
+}
+.newsBox .subtitle{
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+    margin-top: 24px;
+
+}
+.newsBox .tab{
+    display: inline-block;
+    position: relative;
+    height: 26px;
+    line-height: 26px;
+    max-width: 100%;
+    padding: 0 8px;
+    border: 1px solid #e5e5e5;
+    margin-top: 24px;
+    margin-right: 15px;
+    border-radius: 5px;
+    color: #999;
+    font-size: 12px;
+    word-break: keep-all;
+    overflow: hidden;
+    z-index: 2;
+}
+
+
 
 
 /* 标题文字 */
@@ -797,6 +877,16 @@ export default {
         left: 5%;
         top: -20%;
     
+    }
+
+    #HomePage .product .imgBox[data-v-4eb70d62] {
+        width: 58%;
+        height: 400px;
+        padding-top: 38px;
+        margin-left: 40px;
+        margin-top: 20px;
+        border-radius: 10px;
+        overflow: hidden;
     }
 
 }
