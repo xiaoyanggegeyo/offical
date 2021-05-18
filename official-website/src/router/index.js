@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 Vue.use(Router)
 
 export default new Router({
@@ -22,10 +23,10 @@ export default new Router({
           meta: {
             title: '首页'
           }
-        },{
-          path:'/infoDetail',
-          name:'infoDetail',
-          component:resolve=>require(['@/view/homePage/InfoDetail'],resolve),
+        }, {
+          path: '/infoDetail',
+          name: 'infoDetail',
+          component: resolve => require(['@/view/homePage/InfoDetail'], resolve),
           meta: {
             title: '新闻详情'
           }
@@ -46,7 +47,7 @@ export default new Router({
               name: 'software',
               component: resolve => require(['@/view/Software_smartTown'], resolve),
               meta: {
-                title: '软件产品丨智能小镇管理系统'
+                title: '宝林科技中药饮片'
               }
             }
           ]
@@ -57,12 +58,12 @@ export default new Router({
           meta: {
             title: '技术实力'
           }
-        },{
-          path:'/technologydetail',
-          name:'TechnologyDetail',
-          component:resolve => require(['@/view/technology/TechnologyDetail'],resolve),
-          math:{
-            title:'技术实力详情'
+        }, {
+          path: '/technologydetail',
+          name: 'TechnologyDetail',
+          component: resolve => require(['@/view/technology/TechnologyDetail'], resolve),
+          math: {
+            title: '技术实力详情'
           }
 
         }, {
@@ -83,7 +84,7 @@ export default new Router({
         {
           path: '/servicedetail',
           name: 'servicedetail',
-          component: resolve => require(['@/view/ServiceDetail'],resolve),
+          component: resolve => require(['@/view/ServiceDetail'], resolve),
           meta: {
             title: '相关服务'
           }

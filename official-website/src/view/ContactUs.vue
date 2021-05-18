@@ -3,11 +3,11 @@
     <div style="width:100%;height:400px;margin-bottom:30px" class="container-fuild">
       <a :href="bannerList.link">
         <img style="display:block;height:100%;width:100%" :src="bannerList.bannerUrl" alt="">
-      </a>     
+      </a>
     </div>
     <div class="container" >
       <div class="container-fuild ContactUs-container ">
-          <span class="bodyTitle">联系我们</span> 
+          <span class="bodyTitle">联系我们</span>
           <div class="row" style="border-top:1px solid #E4E4E4;padding-top:11px;margin-top:7px;width:100%;">
             <!-- 左边 -->
             <div class="col-xs-12 col-sm-12 col-md-4" style="margin-top:67px;margin-bottom:90px;line-height:20px">
@@ -19,8 +19,8 @@
             <!-- 中间 -->
             <div class="col-xs-12 col-sm-12 col-md-4" style="margin-top:67px;">
               <p>公司地址</p>
-              <p style="color:#888888;font-size:14px;margin-top:30px;m">贵州省安顺经济技术开发区双新路42号<br/><br/>安顺市宝林科技中药饮片有限公司</p>
-            </div>     
+              <p style="color:#888888;font-size:14px;margin-top:30px;">贵州省安顺经济技术开发区双新路42号<br/><br/>安顺市宝林科技中药饮片有限公司</p>
+            </div>
            <!-- 右边 -->
            <div class="col-xs-12 col-sm-12 col-md-4" style="margin-top:67px;">
              <img src="@/assets/img/qrCode.png" alt="" style="display:block;width:95%;height:50%;">
@@ -30,10 +30,10 @@
       <div style="margin-bottom:40px;">
             <div id="map" class=" "></div>
       </div>
-          
+
 
     </div>
-         
+
   </div>
 </template>
 <script>

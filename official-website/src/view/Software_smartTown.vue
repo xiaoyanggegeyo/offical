@@ -1,17 +1,15 @@
 <template>
-    <div id="smartTown">
-        智能小镇管理系统
-    </div>
+  <div id="smartTown">
+    宝林科技中药饮片
+  </div>
 </template>
 <script>
-export default {
+  export default {
     name: 'smartTown',
-    data(){
-        return{
-
-        }
+    data() {
+      return {}
     }
-}
+  }
 </script>
 <style scoped>
 
